@@ -7,6 +7,7 @@ on:
     paths:
       - "scripts/add_mermaid_diagrams.py"
       - "scripts/run_mermaid_migration.py"
+      - "scripts/remove_redundant_ascii_diagrams.py"
       - ".github/workflows/mermaid-migration.yml"
   workflow_dispatch:
 
@@ -36,6 +37,9 @@ jobs:
       - name: Migrate diagrams
         run: python scripts/run_mermaid_migration.py
 
+      - name: Remove redundant ASCII diagrams
+        run: python scripts/remove_redundant_ascii_diagrams.py
+
       - name: Install documentation dependencies
         run: pip install -r requirements-docs.txt
 
@@ -51,5 +55,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add questions mkdocs.yml
-          git commit -m "add Mermaid diagrams across interview questions"
+          git commit -m "replace ASCII diagrams with Mermaid visualizations"
           git push
