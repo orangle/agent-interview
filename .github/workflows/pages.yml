@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "questions/**"
+      - "hooks/**"
       - "mkdocs.yml"
       - "requirements-docs.txt"
       - ".github/workflows/pages.yml"
@@ -36,6 +37,29 @@ jobs:
 
       - name: Install documentation dependencies
         run: pip install -r requirements-docs.txt
+
+      - name: Validate source-link normalization
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path("hooks/normalize_source_links.py")
+          spec = importlib.util.spec_from_file_location("normalize_source_links", path)
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+
+          sample = """## 来源
+
+          - OpenAI Agents SDK Tools：模型提出工具调用
+            - https://openai.github.io/openai-agents-python/tools/
+
+          ## 核心结论
+          """
+          rendered = module.on_page_markdown(sample)
+          assert "[查看原文](https://openai.github.io/openai-agents-python/tools/)" in rendered
+          assert "\n  - https://" not in rendered
+          PY
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
