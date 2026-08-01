@@ -1,6 +1,6 @@
 site_name: Agent 工程面试知识库
 site_description: 面向 Agent Engineer 与大模型应用工程师岗位的深度面试题、原理手撕和生产实践
-site_url: https://orangleliu.info/agent-interview/
+site_url: https://orangle.github.io/agent-interview/
 repo_url: https://github.com/orangle/agent-interview
 repo_name: orangle/agent-interview
 edit_uri: edit/main/questions/
