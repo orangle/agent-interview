@@ -1,6 +1,6 @@
 # Canonical Question Backlog
 
-本文件把原始题库中的 115 个问法合并为 52 道主问题。新增材料先映射到已有主问题，只有推理框架明显不同才新建问题。
+本文件把原始题库中的 115 个问法合并为 52 道主问题，并根据面试原理训练新增 Q053。新增材料先映射到已有主问题，只有推理框架明显不同才新建问题。
 
 ## 状态说明
 
@@ -27,6 +27,7 @@
 | Q013 | 已完成 | 生产环境什么时候使用 Agent 框架，什么时候自己实现核心 Runtime？ | `1.10` `1.15` |
 | Q014 | 待回答 | Agent 的分层安全防御应该如何设计？ | `1.11` `2.4` `9.2` |
 | Q015 | 待回答 | Badcase 如何定义、归因并形成数据飞轮？ | `1.12` `1.13` `1.14` |
+| Q053 | 已完成 | 从零设计一个最小 Agent Runtime：状态、循环、工具、停止和恢复如何实现？ | `1.9` `1.10` `5.4` `5.5` `12.2` + 原理补充 |
 
 ## B. Prompt、Context 与 Skill
 
@@ -94,6 +95,21 @@
 | Q050 | 需核验 | Claude Code、Codex、Cursor 等 Coding Agent 如何比较？ | `10.1` `10.3` `10.4` `10.5` `11.12` |
 | Q051 | 需核验 | LangChain、LangGraph、LangSmith 及主流 Agent 框架如何选型？ | `7.2` `10.2` |
 | Q052 | 已完成（2026-08-01） | 什么是 Harness Engineering？它与 Prompt、Context、Agent Runtime 有什么关系？ | `1.8` `11.1`—`11.11` `12.3` |
+
+## 原理手撕扩展方向
+
+完整清单见：[Agent 设计原理与手撕专题](./PRINCIPLES.md)。
+
+后续优先补充：
+
+- 手写 Function Calling 完整链路；
+- Agent State、Message、ToolCall 和 Observation 数据结构；
+- Context Builder 与 Token Budget；
+- Checkpoint、暂停、恢复和幂等；
+- 异步长工具状态机；
+- Parallel Tool Calling 依赖调度；
+- Human-in-the-Loop 审批状态机；
+- Agent Trace、Replay 和故障归因。
 
 ## 去重判断
 
