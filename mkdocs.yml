@@ -1,6 +1,6 @@
 site_name: Agent 工程面试知识库
 site_description: 面向 Agent Engineer 与大模型应用工程师岗位的深度面试题、原理手撕和生产实践
-site_url: https://orangle.github.io/agent-interview/
+site_url: https://orangleliu.info/agent-interview/
 repo_url: https://github.com/orangle/agent-interview
 repo_name: orangle/agent-interview
 edit_uri: edit/main/questions/
@@ -11,14 +11,94 @@ site_dir: site
 exclude_docs: |
   README.md
 
+nav:
+  - 首页: index.md
+  - 学习入口:
+      - 完整题库: BACKLOG.md
+      - 原理手撕专题: PRINCIPLES.md
+  - Agent 基础与 Runtime:
+      - Q001 Agent 与 Workflow: 01-agent-vs-workflow.md
+      - Q002 ReAct 与 Agent Loop: 02-react-and-agent-loop.md
+      - Q003 停止条件与循环控制: 03-agent-stop-and-loop-control.md
+      - Q004 Tool Calling 可靠性: 04-reliable-tool-calling.md
+      - Q005 Context Engineering: 05-context-engineering.md
+      - Q006 单 Agent 与 Multi-Agent: 06-single-vs-multi-agent.md
+      - Q007 Agent 评估体系: 07-agent-evaluation.md
+      - Q008 生产级 RAG 总体设计: 08-production-rag.md
+      - Q009 Agent 与大模型: 09-agent-vs-model-and-components.md
+      - Q010 设计范式与重规划: 10-agent-patterns-task-decomposition-replanning.md
+      - Q011 Reflection 与 Reflexion: 11-reflection-reflexion-evaluator-optimizer.md
+      - Q012 Coding Agent 修复闭环: 12-coding-agent-verifiable-repair-loop.md
+      - Q013 框架与自研 Runtime: 13-framework-vs-custom-runtime.md
+      - Q014 分层安全防御: 14-agent-layered-security-defense.md
+      - Q015 Badcase 数据飞轮: 15-badcase-attribution-and-data-flywheel.md
+  - Prompt 与 Skill:
+      - Q016 System Prompt 设计: 16-agent-system-prompt-design.md
+      - Q017 Few-shot 与推理提示: 17-few-shot-and-chain-of-thought-in-agents.md
+      - Q018 Prompt 鲁棒性: 18-agent-prompt-robustness.md
+      - Q019 Skill、Tool、MCP 与 Workflow: 19-skill-tool-mcp-workflow-boundaries.md
+  - RAG 与知识系统:
+      - Q020 分块与 Contextual Retrieval: 20-rag-chunking-and-contextual-retrieval.md
+      - Q021 Embedding 选型与微调: 21-embedding-model-selection-and-finetuning.md
+      - Q022 查询路由与重写: 22-rag-query-routing-and-rewriting.md
+      - Q023 向量索引选型: 23-vector-index-selection.md
+      - Q024 混合召回与融合: 24-hybrid-retrieval-and-rank-fusion.md
+      - Q025 Reranker 原理与选型: 25-reranker-bi-encoder-vs-cross-encoder.md
+      - Q026 RAG 分层评估: 26-rag-evaluation-system.md
+      - Q027 复杂文档与多模态: 27-rag-complex-documents-and-multimodal.md
+      - Q028 长上下文与 RAG: 28-long-context-vs-rag.md
+      - Q029 幻觉检测与治理: 29-agent-rag-hallucination-detection-and-mitigation.md
+      - Q030 知识冲突与版本治理: 30-knowledge-conflict-versioning-and-updates.md
+  - Tool Calling 与执行:
+      - Q031 Function Calling 与 Tool Calling: 31-function-calling-vs-tool-calling.md
+      - Q032 工具结果压缩与证据: 32-tool-result-compression-and-evidence-preservation.md
+      - Q033 异步长工具执行: 33-async-long-running-tool-execution.md
+      - Q034 工具发现与路由: 34-tool-discovery-routing-and-candidate-control.md
+      - Q035 并行工具一致性: 35-parallel-tool-calling-consistency.md
+  - Memory:
+      - Q036 Memory 分层: 36-agent-memory-layering.md
+      - Q037 Memory 读写更新与遗忘: 37-memory-write-read-update-forgetting.md
+      - Q038 长对话短期记忆: 38-long-conversation-short-term-memory.md
+      - Q039 多租户隔离与一致性: 39-multi-tenant-memory-isolation-and-consistency.md
+      - Q040 Memory 冷启动: 40-memory-cold-start.md
+  - Multi-Agent 与协议:
+      - Q041 拓扑、通信、状态与路由: 41-multi-agent-topology-communication-state-routing.md
+      - Q042 错误与幻觉放大: 42-multi-agent-error-amplification.md
+      - Q043 MCP 架构与传输: 43-mcp-architecture-primitives-and-transports.md
+      - Q044 MCP 与 Function Calling: 44-mcp-vs-function-calling-and-direct-api.md
+      - Q045 SSE 与 WebSocket: 45-sse-vs-websocket-for-agent-frontend.md
+      - Q046 A2A 协议: 46-a2a-protocol-agent-card-task-message.md
+      - Q047 大模型网关: 47-llm-gateway-design.md
+  - 系统设计与框架:
+      - Q048 智能客服 Agent: 48-production-customer-service-agent-design.md
+      - Q049 模型能力边界与路由: 49-model-capability-boundaries-and-routing.md
+      - Q050 Coding Agent 产品比较: 50-coding-agent-product-comparison.md
+      - Q051 Agent 框架选型: 51-agent-framework-selection.md
+      - Q052 Harness Engineering: 52-harness-engineering.md
+  - 原理手撕:
+      - Q053 最小 Agent Runtime: 53-design-minimal-agent-runtime.md
+      - Q054 Function Calling 完整链路: 54-function-calling-end-to-end.md
+      - Q055 Agent State 与消息协议: 55-agent-state-and-message-protocol.md
+      - Q056 Context Builder 与预算: 56-context-builder-and-token-budget.md
+      - Q057 停止条件与循环检测: 57-stop-conditions-and-loop-detection.md
+      - Q058 Checkpoint 与幂等恢复: 58-checkpoint-pause-resume-idempotency.md
+      - Q059 异步长工具状态机: 59-async-long-running-tools.md
+      - Q060 并行工具依赖调度: 60-parallel-tool-dependency-scheduler.md
+      - Q061 Planner–Executor–Replanner: 61-planner-executor-replanner.md
+      - Q062 人工审批状态机: 62-human-in-the-loop-approval-state-machine.md
+      - Q063 Trace、Replay 与故障归因: 63-agent-trace-replay-failure-attribution.md
+
 theme:
   name: material
   language: zh
   features:
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.prune
     - navigation.top
     - navigation.footer
     - toc.follow
@@ -30,11 +110,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: indigo
+      accent: deep orange
       toggle:
         icon: material/brightness-7
         name: 切换到深色模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/brightness-4
         name: 切换到浅色模式
@@ -44,6 +128,7 @@ plugins:
       lang:
         - zh
         - en
+      separator: '[\s\-、，。；：！？（）【】]+'
 
 markdown_extensions:
   - admonition
@@ -65,7 +150,10 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/learning.js
+
 extra:
   generator: false
 
-copyright: Agent Interview Knowledge Base · 持续根据学习反馈迭代
+copyright: Agent Interview Knowledge Base · 学习进度仅保存在当前浏览器
