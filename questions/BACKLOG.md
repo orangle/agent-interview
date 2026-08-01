@@ -20,11 +20,11 @@
 | Q006 | 已完成 | 什么时候用单 Agent，什么时候用 Multi-Agent？ | `7.1` |
 | Q007 | 已完成 | 如何建立 Agent 评估体系？ | `1.12` `1.13` `9.3` `9.4` |
 | Q008 | 已完成 | 如何设计一个生产可用的 RAG 系统？ | `3.1` |
-| Q009 | 待回答 | Agent 与大模型的本质区别是什么？一个 Agent 至少需要哪些组件？ | `1.1` `1.2` |
-| Q010 | 待回答 | Agent 有哪些常见设计范式？复杂任务如何拆分与动态重规划？ | `1.4` `1.5` `1.6` |
-| Q011 | 待回答 | Reflection、Reflexion 和 Evaluator-Optimizer 有什么区别？ | `1.7` `1.16` |
+| Q009 | 已完成 | Agent 与大模型的本质区别是什么？一个 Agent 至少需要哪些组件？ | `1.1` `1.2` |
+| Q010 | 已完成 | Agent 有哪些常见设计范式？复杂任务如何拆分与动态重规划？ | `1.4` `1.5` `1.6` |
+| Q011 | 已完成 | Reflection、Reflexion 和 Evaluator-Optimizer 有什么区别？ | `1.7` `1.16` |
 | Q012 | 待回答 | Coding Agent 经常生成错误代码时，如何建立可验证的修复闭环？ | `1.8` |
-| Q013 | 待回答 | 生产环境什么时候使用 Agent 框架，什么时候自己实现核心 Runtime？ | `1.10` `1.15` |
+| Q013 | 已完成 | 生产环境什么时候使用 Agent 框架，什么时候自己实现核心 Runtime？ | `1.10` `1.15` |
 | Q014 | 待回答 | Agent 的分层安全防御应该如何设计？ | `1.11` `2.4` `9.2` |
 | Q015 | 待回答 | Badcase 如何定义、归因并形成数据飞轮？ | `1.12` `1.13` `1.14` |
 
@@ -32,10 +32,10 @@
 
 | ID | 状态 | 主问题 | 原始题号 |
 |---|---|---|---|
-| Q016 | 待回答 | Agent 的 System Prompt 应该怎么写？与普通 Chat Prompt 有什么不同？ | `2.1` |
+| Q016 | 已完成 | Agent 的 System Prompt 应该怎么写？与普通 Chat Prompt 有什么不同？ | `2.1` |
 | Q017 | 待回答 | Few-shot 与 Chain-of-Thought 在 Agent 中应该如何使用？ | `2.2` |
 | Q018 | 待回答 | Agent Prompt 为什么会失效？如何提高鲁棒性？ | `2.3` |
-| Q019 | 待回答 | Skill、Tool、MCP Server 和 Workflow 的边界是什么？ | `2.5` |
+| Q019 | 已完成 | Skill、Tool、MCP Server 和 Workflow 的边界是什么？ | `2.5` |
 
 ## C. RAG 与知识系统
 
@@ -93,7 +93,7 @@
 | Q049 | 需核验 | 如何建立模型能力边界并进行模型路由和选型？ | `9.5` |
 | Q050 | 需核验 | Claude Code、Codex、Cursor 等 Coding Agent 如何比较？ | `10.1` `10.3` `10.4` `10.5` `11.12` |
 | Q051 | 需核验 | LangChain、LangGraph、LangSmith 及主流 Agent 框架如何选型？ | `7.2` `10.2` |
-| Q052 | 需核验 | 什么是 Harness Engineering？它与 Prompt、Context、Agent Runtime 有什么关系？ | `1.8` `11.1`—`11.11` `12.3` |
+| Q052 | 已完成（2026-08-01） | 什么是 Harness Engineering？它与 Prompt、Context、Agent Runtime 有什么关系？ | `1.8` `11.1`—`11.11` `12.3` |
 
 ## 去重判断
 
