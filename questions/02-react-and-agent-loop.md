@@ -171,24 +171,7 @@ ReAct 提供了纠错机会，不提供正确性证明。
 
 一个生产级循环更像状态机，而不是简单的 `while true`：
 
-```text
-RECEIVED
-  ↓
-PLANNING
-  ↓
-READY_TO_ACT
-  ↓
-TOOL_RUNNING
-  ├─成功→ OBSERVING
-  ├─可重试失败→ RETRY_WAIT
-  └─不可恢复失败→ FAILED
-  ↓
-EVALUATING_PROGRESS
-  ├─证据不足→ PLANNING
-  ├─需要审批→ WAITING_APPROVAL
-  ├─达到目标→ SUCCEEDED
-  └─预算耗尽→ PARTIAL / FAILED
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 状态机的价值是：
 

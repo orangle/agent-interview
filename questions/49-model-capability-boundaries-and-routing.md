@@ -98,14 +98,7 @@ flowchart TD
 
 ## 四、路由策略
 
-```text
-Task Requirement
-  → Hard Capability Filter
-  → Compliance / Region Filter
-  → Quality Threshold
-  → Latency / Cost Optimization
-  → Health-aware Selection
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 先过滤“不能做”的模型，再在满足质量门槛的候选中优化成本和延迟。
 

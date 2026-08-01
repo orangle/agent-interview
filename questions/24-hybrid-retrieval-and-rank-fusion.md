@@ -122,41 +122,12 @@ final = α * normalized_bm25 + (1-α) * normalized_dense
 
 可采用动态预算：
 
-```text
-含错误码/ID/类名
-  → BM25 召回更多
-
-自然语言解释、同义改写
-  → Dense 召回更多
-
-路由置信度低
-  → 两路都扩大候选，但限制总预算
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 初始可以 1:1 作为基线，但最终必须通过 Query 分桶评测，而不是形成永久规则。
 
 ## 五、完整流程
 
-```text
-Original Query
-   ├── BM25 Search ────── Top-N1
-   └── Dense Search ───── Top-N2
-                │
-                ▼
-        Permission Filter
-                │
-                ▼
-        Deduplicate / Merge
-                │
-                ▼
-          RRF or Weighted Fusion
-                │
-                ▼
-             Reranker
-                │
-                ▼
-          Diversity / Context Build
-```
 
 注意权限过滤的位置。如果数据库支持安全的 Pre-filter，应尽量在检索阶段限制租户和 ACL；不能先检索越权文档再依赖生成层隐藏。
 

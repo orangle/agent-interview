@@ -38,13 +38,7 @@ flowchart TD
 
 最危险的故障窗口：
 
-```text
-工具实际执行成功
-→ 进程在写 Checkpoint 前崩溃
-→ 恢复后系统看不到成功记录
-→ 再次执行工具
-→ 重复发布、重复扣款、重复删除
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 所以“每一步后把 messages 存数据库”并不能保证安全。真正要解决的是：
 
@@ -111,28 +105,6 @@ class Checkpoint:
 
 ## 四、暂停与恢复状态机
 
-```text
-RUNNING
-  ├── 等待人工审批 → WAITING_APPROVAL
-  ├── 等待长工具   → WAITING_EXTERNAL
-  ├── 用户暂停     → PAUSED
-  ├── 完成         → COMPLETED
-  └── 失败         → FAILED
-
-WAITING_APPROVAL
-  ├── approve → READY_TO_RESUME
-  ├── reject  → REPLAN / CANCELLED
-  └── expire  → FAILED / ESCALATED
-
-WAITING_EXTERNAL
-  ├── result received → READY_TO_RESUME
-  ├── timeout         → RETRY / FAILED
-  └── cancel          → CANCELLED
-
-READY_TO_RESUME
-  → RECONCILING
-  → RUNNING
-```
 
 恢复前增加 `RECONCILING`，不能直接继续。它负责对账：
 
@@ -242,11 +214,6 @@ async def resume_run(run_id):
 
 例如发布流程：
 
-```text
-创建 Deployment 成功
-→ 更新流量失败
-→ 补偿：删除新 Deployment 或回滚流量
-```
 
 补偿不是数据库事务的完全替代，而是分布式副作用的显式反向动作。
 

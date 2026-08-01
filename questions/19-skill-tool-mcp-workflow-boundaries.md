@@ -65,13 +65,7 @@ flowchart TD
 
 以 Agent Skills 为例，一个 Skill 通常包含：
 
-```text
-code-review/
-├── SKILL.md          # 元数据、适用场景和执行说明
-├── scripts/          # 可选的确定性脚本
-├── references/       # 可选的规范、领域知识
-└── assets/           # 可选的模板和静态资源
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 Skill 的价值不只是复用 Prompt，而是把以下内容打包：
 
@@ -160,14 +154,6 @@ Workflow 负责：
 
 例如发布故障分析：
 
-```text
-接收任务
-→ 获取构建信息
-→ 获取日志与 Diff
-→ Agent 分析根因
-→ 规则检查证据
-→ 生成报告
-```
 
 其中“获取日志”可以是 Tool，“如何分析日志”可以由 Skill 指导，工具可以通过 MCP 接入，整个稳定流程由 Workflow 管理。
 

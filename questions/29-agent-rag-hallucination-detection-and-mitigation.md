@@ -194,18 +194,7 @@ RAG 只提高获得外部证据的可能性。以下情况仍会出错：
 
 Trace 保存：
 
-```text
-Query
-→ Route
-→ Rewrite
-→ Retrieval Candidates
-→ Rerank
-→ Model Decision
-→ Tool Call
-→ Tool Result
-→ State Update
-→ Final Claims + Citations
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 回放时冻结外部依赖或保存工具快照，比较：
 

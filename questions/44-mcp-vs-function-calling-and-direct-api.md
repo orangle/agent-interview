@@ -31,17 +31,7 @@ flowchart TD
 
 ## 一、分层关系
 
-```text
-LLM
-  │ Function / Tool Call 意图
-  ▼
-Agent Runtime / Host
-  │
-  ├── 进程内函数
-  ├── 直接 HTTP / gRPC API
-  ├── MCP Client → MCP Server → API
-  └── Tool Gateway → 多种后端
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 模型通常不关心底层是 MCP 还是 HTTP，只看到稳定 Tool Contract。
 
@@ -94,15 +84,6 @@ MCP Server 内部最终仍可能调用普通 API。
 
 ## 六、企业中的推荐形态
 
-```text
-Agent Runtime
-  → Candidate Tool Router
-  → Enterprise Tool Gateway
-       ├── Native API Adapter
-       ├── MCP Client Adapter
-       ├── Legacy Script Adapter
-       └── Audit / Auth / Rate Limit
-```
 
 不要强制所有内部服务改造成 MCP。Gateway 可以统一向 Agent 暴露 Tool Contract，底层按场景选择直连或 MCP。
 

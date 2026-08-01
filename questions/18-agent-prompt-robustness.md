@@ -171,15 +171,7 @@ if clarification_count >= 2:
 
 ## 十、修复顺序
 
-```text
-先确认任务和 Rubric
-→ 定位是 Context、Tool、State 还是模型问题
-→ 删除冲突和无效内容
-→ 下沉确定性规则到 Runtime
-→ 补结构和 Hard Case 示例
-→ 必要时换模型或拆任务
-→ 回归评测
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 不要无限追加新的“务必、严格、绝对”。
 

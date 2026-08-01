@@ -111,17 +111,7 @@ OCR、表格或单位解析错误造成假冲突。
 
 ## 四、更新链路
 
-```text
-Source Change
-  → Event / Scheduled Scan
-  → Parse New Version
-  → Document-level Hash Compare
-  → Node / Chunk Diff
-  → Build New Index Version
-  → Validation
-  → Atomic Alias Switch
-  → Retain Old Version for Rollback
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ### 事件触发
 
@@ -141,13 +131,6 @@ Webhook、数据库 CDC、消息队列或仓库提交事件，适合实时性要
 
 不要在生产索引上边删边写后立即对外。使用版本化索引：
 
-```text
-knowledge_v11  ← 当前 Alias
-knowledge_v12  ← 构建、回归和抽检
-
-验证通过：alias → v12
-异常回滚：alias → v11
-```
 
 同时记录 Embedding 模型、分块器、解析器和 Reranker 版本。否则回滚文档版本，却使用了不兼容的向量空间。
 

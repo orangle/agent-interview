@@ -34,12 +34,7 @@ flowchart LR
 
 ## 一、Host–Client–Server 架构
 
-```text
-MCP Host（Claude Desktop、IDE、Agent 应用）
-  ├── MCP Client A ── 1:1 ── MCP Server A
-  ├── MCP Client B ── 1:1 ── MCP Server B
-  └── LLM / Context / Consent / Policy
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ### Host
 
@@ -87,12 +82,6 @@ MCP 消息使用 JSON-RPC 2.0，包含：
 
 连接初始化时双方进行版本与 Capability Negotiation。只有声明支持的功能才能在会话中使用。
 
-```text
-Client → initialize
-Server → protocolVersion + capabilities
-Client → initialized notification
-随后进行 tools/list、resources/read、tools/call 等交互
-```
 
 ## 四、传输方式
 

@@ -50,18 +50,7 @@ Embedding 模型输出固定长度向量，目标通常是让语义相关样本�
 
 典型检索结构：
 
-```text
-Query ──Embedding──> Query Vector
-                         │
-                         ▼
-                 ANN Candidate Search
-                         │
-                         ▼
-                Top-N Candidate Chunks
-                         │
-                         ▼
-                 Reranker / LLM
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ## 二、选型需要看的维度
 
@@ -150,15 +139,6 @@ Reranker 无法找回从粗召回阶段已经丢失的文档。
 
 ## 六、决策框架
 
-```text
-正确文档没召回
-  → 先查解析、分块、查询改写、混合检索
-  → 仍因领域语义不匹配，再考虑微调 Embedding
-
-正确文档已召回但排名差
-  → 优化融合与 Reranker
-  → 有稳定标注后微调 Reranker
-```
 
 很多问题并不是模型不够强，而是分块错误、权限过滤错误、Query 被错误改写或评测集不完整。
 

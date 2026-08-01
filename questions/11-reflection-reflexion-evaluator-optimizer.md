@@ -56,15 +56,7 @@ flowchart LR
 
 最简单形式：
 
-```text
-Task
- ↓
-Draft
- ↓
-Critique
- ↓
-Revised Draft
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 Reflection 可能由：
 
@@ -81,13 +73,6 @@ Reflection 可能由：
 
 Reflexion 的关键不只是“重做”，而是：
 
-```text
-执行任务
-→ 获得反馈信号
-→ 用语言总结失败原因与改进策略
-→ 写入 episodic memory
-→ 下一次尝试检索并使用这段反思
-```
 
 几个重要特点：
 
@@ -102,15 +87,6 @@ Reflexion 的关键不只是“重做”，而是：
 
 典型结构：
 
-```text
-Generator → Candidate
-               ↓
-Evaluator → Score + Concrete Feedback
-               ↓
-Optimizer → Revised Candidate
-               ↓
-External Verification / Stop
-```
 
 它适用于：
 

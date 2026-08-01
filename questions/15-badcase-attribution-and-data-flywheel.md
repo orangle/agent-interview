@@ -60,20 +60,7 @@ flowchart LR
 
 ## 三、归因树
 
-```text
-失败
-├── 数据不存在 / 过期 / 冲突
-├── 解析与分块
-├── 路由与 Query Rewrite
-├── 检索与 Rerank
-├── Context Builder
-├── Prompt / Model
-├── Tool 选择 / 参数 / 执行
-├── Agent Loop / State / Stop
-├── 输出解析与校验
-├── UX / Latency
-└── 业务能力边界
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 先定位第一处错误，而不是看到最终答案错就改 Prompt。
 
@@ -161,16 +148,6 @@ flowchart LR
 
 ## 九、线上反馈闭环
 
-```text
-Capture
-→ Triage
-→ Root Cause
-→ Fix Proposal
-→ Offline Regression
-→ Shadow / Canary
-→ Online Metrics
-→ Close or Reopen
-```
 
 修复后还要监控：原 Badcase 是否消失、相邻任务是否退化、成本和延迟是否变化。
 

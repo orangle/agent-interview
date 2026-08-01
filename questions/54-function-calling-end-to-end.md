@@ -108,32 +108,7 @@ class ToolResult:
 
 ## 三、完整状态流转
 
-```text
-PREPARE_TOOLS
-      ↓
-CALL_MODEL
-      ↓
-PARSE_DECISION
-   ├── final_output ───────────────→ COMPLETED
-   ├── invalid_output ─────────────→ REPAIR / FAILED
-   └── tool_calls
-             ↓
-      RESOLVE_TOOL
-             ↓
-      VALIDATE_ARGS
-             ↓
-      AUTHORIZE
-        ├── require approval ──────→ WAITING_APPROVAL
-        └── allowed
-             ↓
-      EXECUTE_TOOL
-             ↓
-      NORMALIZE_RESULT
-             ↓
-      APPEND_OBSERVATION
-             ↓
-      CALL_MODEL
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ## 四、核心伪代码
 
@@ -233,11 +208,6 @@ async def dispatch_tool_call(call, state, registry, policy):
 
 因此至少有两层校验：
 
-```text
-JSON Schema 校验
-        ↓
-业务语义校验
-```
 
 例如 `delete_file(path)` 中，`path` 是字符串只能说明结构合法，还必须校验：
 
@@ -279,12 +249,6 @@ JSON Schema 校验
 
 危险场景：
 
-```text
-工具实际执行成功
-→ 网络在响应前中断
-→ Runtime 认为失败并重试
-→ 产生重复扣款、重复发布、重复删除
-```
 
 解决：
 

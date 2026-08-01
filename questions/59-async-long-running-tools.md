@@ -82,17 +82,7 @@ class ExternalTask:
 
 ## 三、状态机
 
-```text
-CREATED
-  → SUBMITTED
-  → QUEUED
-  → RUNNING
-      ├── SUCCEEDED
-      ├── FAILED
-      ├── CANCEL_REQUESTED → CANCELLED
-      ├── deadline exceeded → TIMED_OUT
-      └── lost heartbeat → UNKNOWN
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 `UNKNOWN` 很重要：无法确认任务状态时，不应立即当作失败并重新提交。
 
@@ -153,9 +143,6 @@ async def poll_task(task):
 
 应使用指数退避并加抖动：
 
-```text
-1s → 2s → 5s → 10s → 30s
-```
 
 ### 2. Webhook / Callback
 
@@ -185,12 +172,6 @@ Polling 为兜底对账
 
 不要让 LLM 自己每隔几秒决定“再查一下”。Runtime 应暂停当前依赖分支：
 
-```text
-Agent Run
-  ├── Step A：提交构建任务 → WAITING_EXTERNAL
-  ├── Step B：分析代码规范 → 可并行继续
-  └── Step C：依赖构建结果 → 暂不执行
-```
 
 无其他可执行步骤时，整个 Run 进入 `WAITING_EXTERNAL` 并写 Checkpoint。外部事件到达后恢复。
 
@@ -213,13 +194,6 @@ def get_runnable_steps(plan, external_tasks):
 
 取消不是把本地状态改成 `cancelled` 就结束。
 
-```text
-用户发起取消
-→ Runtime 标记 cancel_requested
-→ 调用外部工具 cancel(job_id)
-→ 等待外部确认
-→ cancelled
-```
 
 外部任务可能已经无法取消。此时要：
 

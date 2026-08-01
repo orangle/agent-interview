@@ -104,35 +104,7 @@ Runtime 必须负责：
 
 ## 二、最小架构
 
-```text
-                         ┌──────────────────┐
-User Goal ──────────────→│   Agent Runtime  │
-                         │                  │
-                         │  State Machine   │
-                         │  Context Builder │
-                         │  Budget Guard    │
-                         └───────┬──────────┘
-                                 │
-                         messages + tools
-                                 │
-                                 ▼
-                         ┌──────────────────┐
-                         │       LLM        │
-                         └───────┬──────────┘
-                                 │
-                    final / tool_calls / invalid
-                                 │
-                                 ▼
-                         ┌──────────────────┐
-                         │ Tool Dispatcher  │
-                         │ Validate/Execute │
-                         └───────┬──────────┘
-                                 │
-                              result
-                                 │
-                                 ▼
-                         State + Trace + Checkpoint
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 最小实现只需要五个核心模块：
 
@@ -462,12 +434,6 @@ Checkpoint 至少应包含：
 
 恢复流程：
 
-```text
-load latest checkpoint
-→ verify pending side effects
-→ rebuild candidate tools and context
-→ continue from explicit state
-```
 
 最危险的情况是：工具实际已经成功，但服务在写 Checkpoint 前宕机。恢复时必须通过幂等键或外部查询确认结果，而不是再次执行。
 

@@ -104,9 +104,7 @@ flowchart TD
 
 例如：
 
-```text
-Coder → Reviewer → Fixer
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 审查者与生成者独立，能降低同一上下文中的确认偏差。但 Reviewer 仍需要可靠标准，不能只是换一个提示词重复判断。
 
@@ -132,9 +130,6 @@ Coder → Reviewer → Fixer
 
 根据请求将任务交给一个专业 Agent。
 
-```text
-用户请求 → Router → Coding / Data / Ops Agent
-```
 
 适合领域边界清晰的场景。
 
@@ -152,9 +147,6 @@ Coder → Reviewer → Fixer
 
 前一个 Agent 的输出是下一个的输入。
 
-```text
-需求分析 → 代码生成 → 测试 → Review
-```
 
 适合阶段明确、每阶段专业能力不同的任务。
 

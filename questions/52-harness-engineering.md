@@ -244,35 +244,12 @@ Scaffolding 通常指项目结构和基础脚手架；Harness 关注整个执行
 
 可以按执行、评估、防护三层帮助表达：
 
-```text
-Execution Harness   → 工具、状态、调度、恢复
-Evaluation Harness  → 测试、Judge、回归集、发布门禁
-Guardrails Harness  → 权限、沙箱、输入输出拦截
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 但面试时应说明：这是便于分析的分类，不是唯一或统一行业标准。实际能力还包括知识组织、Context、可观测性和持续治理，并且三层之间有重叠。
 
 ## 一个 Coding Agent Harness 示例
 
-```text
-用户任务
-  ↓
-任务契约与验收条件
-  ↓
-仓库导航 + Skill + Relevant Context
-  ↓
-Planner / Agent Loop
-  ↓
-Sandboxed Tools：read / edit / test / browser / git
-  ↓
-Mechanical Feedback：test / lint / type / security / performance
-  ↓
-Review：Agent Reviewer / Human Approval
-  ↓
-Trace + Checkpoint + PR Artifact
-  ↓
-通过验收或升级人工
-```
 
 ## 如何判断 Harness 是否有效
 

@@ -92,15 +92,7 @@ RAG 可以明确记录检索了什么、为什么选它、引用来自哪里。�
 
 ## 四、组合架构
 
-```text
-User Query
-  → Auth / Tenant Filter
-  → Query Planning
-  → Keyword / Dense / SQL / Graph Retrieval
-  → Evidence Set + Parent Documents
-  → Long-context Reasoning
-  → Citation Verification
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 检索不一定只返回小 Chunk。可以先用小块定位，再加载完整章节、文件或相关代码模块，让长上下文负责深度理解。
 

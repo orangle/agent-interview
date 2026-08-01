@@ -47,9 +47,7 @@ stateDiagram-v2
 
 短、稳定、无副作用的工具可以同步执行：
 
-```text
-Agent → Tool → Result → Agent
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 但若工具可能需要数十秒到数小时，同步阻塞会带来：
 
@@ -62,15 +60,6 @@ Agent → Tool → Result → Agent
 
 ## 二、任务状态模型
 
-```text
-CREATED
-  → QUEUED
-  → RUNNING
-  ├── SUCCEEDED
-  ├── FAILED
-  ├── CANCELLED
-  └── WAITING_EXTERNAL
-```
 
 任务记录至少包括：
 
@@ -132,12 +121,6 @@ Runtime 定期查询状态。
 
 若任务之间无依赖，可以继续执行其他准备工作；若当前决策依赖结果，则应暂停该分支。
 
-```text
-Task Graph
-  ├── A：构建任务（长）
-  ├── B：查询历史失败（可并行）
-  └── C：分析构建产物（依赖 A）
-```
 
 并行由依赖图和 Runtime 控制，不是让模型在等待时无限调用其他工具。
 

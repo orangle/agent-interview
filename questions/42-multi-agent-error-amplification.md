@@ -28,14 +28,7 @@ flowchart LR
 
 ## 一、错误放大的链路
 
-```text
-上游检索错误
-  → Agent A 形成错误结论
-  → 摘要丢失不确定性和来源
-  → Agent B 把结论当事实
-  → Agent C 基于此执行动作
-  → Supervisor 只看到一致结果
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 多个 Agent 使用相同模型、相同检索库和相同 Prompt 模式时，它们的错误并不独立。三票一致不代表真实。
 
@@ -82,14 +75,6 @@ Agent 相互引用对方结果，看起来形成交叉验证，实际是循环�
 
 ## 四、共享状态写入门禁
 
-```text
-Agent Output
-  → Schema Validation
-  → Evidence Exists
-  → Source / Version / Permission Check
-  → Contradiction Check
-  → State Reducer
-```
 
 子 Agent 不能直接覆盖全局状态。Reducer 可以：
 

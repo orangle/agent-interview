@@ -76,17 +76,7 @@ score = Encoder([query, document])
 
 ## 三、标准两阶段架构
 
-```text
-Corpus
-  ↓
-BM25 / Dense / Hybrid Recall
-  ↓  Top 50～200 候选（示意，不是固定值）
-Reranker
-  ↓  Top 5～20
-Context Builder
-  ↓
-LLM Generate
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 候选数量必须由 Recall–Latency 曲线决定。召回太少，正确文档进不来；召回太多，Reranker 延迟和成本上升，而且低质量候选增加排序难度。
 
@@ -116,14 +106,6 @@ LLM Generate
 
 若正确文档没有进入候选集，Reranker 无法找回它。因此排查顺序应是：
 
-```text
-答案错误
-  → 正确证据是否存在？
-  → 是否被正确解析和分块？
-  → 是否进入召回候选？
-  → 是否被错误重排？
-  → 生成模型是否正确使用？
-```
 
 不能把所有问题都归因于 Reranker。
 

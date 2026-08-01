@@ -128,18 +128,7 @@ Runtime State 不能只存在自然语言消息里，Memory 也不能替代数�
 
 ## 七、各层如何协作
 
-```text
-Long-term Semantic / Episodic / Procedural Stores
-                   │ retrieve
-                   ▼
-Short-term Session State + Checkpoint
-                   │ select / compress
-                   ▼
-Working Context sent to LLM
-                   │ actions / observations
-                   ▼
-State Update → selective memory write
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 读取和写入都需要策略。不是每条消息都进入长期记忆，也不是每次请求都加载全部记忆。
 

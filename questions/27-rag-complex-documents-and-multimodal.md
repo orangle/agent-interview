@@ -42,16 +42,7 @@ flowchart LR
 
 ## 一、统一处理框架
 
-```text
-Raw File
-  → File Type / Layout Detection
-  → Modality-specific Parsing
-  → Structural Nodes
-  → Search Representation
-  → Indexes
-  → Retrieval
-  → Original Evidence Reconstruction
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 每个节点至少保留：
 
@@ -176,14 +167,6 @@ PDF 可能是：
 
 同一节点可以有多个表示：
 
-```text
-原始证据
-  ├── 关键词索引
-  ├── 文本 Embedding
-  ├── 图片 Embedding
-  ├── 结构化字段索引
-  └── 图关系 / AST 索引
-```
 
 路由器根据 Query 选择检索通道，最终统一映射回原始证据 ID。
 

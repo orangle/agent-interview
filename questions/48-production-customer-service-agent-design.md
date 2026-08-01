@@ -31,18 +31,7 @@ flowchart TD
 
 ## 一、分层架构
 
-```text
-Channel / User
-  → Identity & Consent
-  → Intent / Risk Router
-  → Conversation State
-  → Policy & Knowledge Retrieval
-  → Agent Decision
-  → Read Tools / Write Workflows
-  → Verification / Approval
-  → Response / Human Handoff
-  → Trace / Evaluation
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ## 二、意图与风险路由
 
@@ -167,15 +156,6 @@ LLM 负责解释规则，不负责凭记忆创造规则。
 
 ## 十、上线策略
 
-```text
-离线历史会话回放
-→ Shadow 模式只给建议
-→ 人工坐席 Copilot
-→ 低风险 FAQ 自动回复
-→ 只读查询
-→ 有审批的写流程
-→ 小范围自主处理
-```
 
 逐级扩大权限，每一级都要有回滚和评测。
 

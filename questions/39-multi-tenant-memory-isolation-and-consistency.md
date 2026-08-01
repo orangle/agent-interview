@@ -54,28 +54,12 @@ version
 
 ### 写路径
 
-```text
-Auth
-→ Validate Memory Type
-→ Idempotency / Version Check
-→ Durable Event Log
-→ Update Source Store
-→ Async Index / Cache Update
-→ Publish Invalidation Event
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 先写权威存储，再异步更新向量索引。不能把向量库当作唯一事实源。
 
 ### 读路径
 
-```text
-Auth Context
-→ Exact KV / Structured Fact Lookup
-→ Semantic Retrieval with Tenant Filter
-→ Version / Expiry Filter
-→ Conflict Resolution
-→ Context Budget
-```
 
 ## 四、一致性模型
 
@@ -110,12 +94,6 @@ Auth Context
 
 高并发写入不应同步调用 Embedding 和向量库：
 
-```text
-Request
-→ Durable Queue / Outbox
-→ Batch Extract / Embed
-→ Bulk Upsert Index
-```
 
 保护层：
 

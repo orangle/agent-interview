@@ -65,14 +65,7 @@ flowchart TD
 
 从案例库检索相关示例：
 
-```text
-Current Task
-→ Intent / Risk Filter
-→ Example Retrieval
-→ Diversity / Quality Filter
-→ Token Budget
-→ Prompt
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 必须避免：
 

@@ -192,14 +192,7 @@ def apply_patch(state, patch):
 
 状态不能随意跳转：
 
-```text
-created → running
-running → waiting_tool | waiting_approval | paused | completed | failed
-waiting_tool → running | failed
-waiting_approval → running | cancelled | failed
-paused → running | cancelled
-completed / failed / cancelled → 终态
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 例如：
 

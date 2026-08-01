@@ -44,15 +44,7 @@ flowchart TD
 
 一条完整链路可以拆成：
 
-```text
-Query
- → Routing / Rewriting
- → Retrieval
- → Reranking
- → Context Building
- → Generation
- → Citation / Business Action
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 每层都要有独立输入、输出和指标，并保存 Trace。否则调参后即使总分变化，也不知道收益来自哪里。
 
@@ -185,19 +177,6 @@ P50/P95/P99 延迟、检索与重排耗时、错误率、Token、每请求成本
 
 ## 九、根因定位矩阵
 
-```text
-正确文档未进入候选
- → 解析 / 分块 / Embedding / Query / Index
-
-候选有正确文档但未进最终上下文
- → 融合 / Reranker / 去重 / Token Budget
-
-上下文充分但回答错
- → Prompt / 模型 / 推理 / 输出校验
-
-回答正确但引用错
- → Citation Mapping / Chunk Metadata
-```
 
 ## 常见错误回答
 

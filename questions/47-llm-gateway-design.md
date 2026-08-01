@@ -31,19 +31,7 @@ flowchart LR
 
 ## 一、核心职责
 
-```text
-Agent / Application
-  → LLM Gateway
-      ├── Auth / Tenant
-      ├── Request Normalization
-      ├── Model Policy & Routing
-      ├── Quota / Budget
-      ├── Retry / Circuit Breaker
-      ├── Cache
-      ├── Safety / Data Policy
-      ├── Metrics / Audit
-      └── Provider Adapters
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ## 二、统一接口但保留能力声明
 

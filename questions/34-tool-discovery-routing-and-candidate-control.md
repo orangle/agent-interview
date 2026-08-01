@@ -50,14 +50,7 @@ Registry 负责版本、所有者、权限、健康度、成本和弃用，不�
 
 ## 二、分层路由
 
-```text
-用户与租户权限过滤
-  → 当前业务域 / Agent 能力过滤
-  → 任务状态过滤
-  → 规则或语义召回 Top-N 工具
-  → LLM 在小候选集中选择
-  → Runtime 最终校验
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 ### 1. 硬过滤
 
@@ -103,17 +96,6 @@ Registry 负责版本、所有者、权限、健康度、成本和弃用，不�
 
 工具规模很大时，先选领域，再选工具：
 
-```text
-Observability
-  ├── search_logs
-  ├── query_metrics
-  └── get_trace
-
-Deployment
-  ├── get_release
-  ├── rollback
-  └── restart
-```
 
 一级路由可由规则或轻模型完成，二级由语义检索 + LLM 选择。不要构建过深层级，否则路由错误会累积。
 

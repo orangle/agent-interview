@@ -185,13 +185,7 @@ artifacts：按 ID 追加，不直接覆盖
 
 Trace 应表现为父子 Span：
 
-```text
-Root Task
-  ├── Supervisor Plan
-  ├── Log Agent
-  ├── Code Agent
-  └── Judge / Merge
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 记录每个 Agent 的输入 Contract、输出、证据、模型、成本、延迟和 Handoff 原因。
 

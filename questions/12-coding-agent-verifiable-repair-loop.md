@@ -29,19 +29,7 @@ flowchart TD
 
 ## 一、最小闭环
 
-```text
-Understand Task
-→ Inspect Repository
-→ Plan Change
-→ Edit in Isolated Workspace
-→ Format / Compile / Static Check
-→ Targeted Tests
-→ Observe Failures
-→ Classify Root Cause
-→ Repair or Replan
-→ Diff Review
-→ Acceptance Gate
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 “生成 → 执行 → 报错 → 再生成”只是起点；生产系统还需要控制修改范围、验证目标、循环预算和副作用。
 

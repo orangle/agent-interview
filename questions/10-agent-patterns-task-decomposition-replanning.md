@@ -4,7 +4,6 @@
 - 难度：进阶 / 系统设计
 - 标签：ReAct、Plan-and-Execute、Reflection、Orchestrator、Replanning
 
-
 <!-- mermaid-diagram:start -->
 
 ## 可视化图解
@@ -76,9 +75,7 @@ flowchart TD
 
 把任务拆成固定步骤，上一步输出作为下一步输入：
 
-```text
-提取需求 → 生成方案 → 检查格式 → 输出
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 适合：
 
@@ -92,13 +89,6 @@ flowchart TD
 
 先判断任务类型，再选择不同路径、模型、知识库或工具集：
 
-```text
-用户请求
-  ├─ 文档问答 → RAG
-  ├─ 代码修改 → Coding Agent
-  ├─ 数据查询 → SQL Agent
-  └─ 高风险操作 → 人工审批
-```
 
 Router 可以是规则、分类模型、向量检索或 LLM。高频、边界清晰的路由优先使用规则或小模型，模糊意图再交给 LLM。
 
@@ -133,9 +123,6 @@ Orchestrator 根据任务动态拆分并分发给 Worker，再聚合结果。
 
 一个生成器产生产物，另一个评估器基于明确标准给出反馈，生成器再修改：
 
-```text
-Generate → Evaluate against rubric → Improve → Verify
-```
 
 适合：
 
@@ -149,9 +136,6 @@ Generate → Evaluate against rubric → Improve → Verify
 
 ReAct 在推理与动作之间交替：
 
-```text
-当前状态 → 选择动作 → 获取观察 → 更新状态 → 下一步
-```
 
 适合路径无法预先确定、需要不断获取外部信息的任务，例如故障诊断、浏览器操作和代码探索。
 
@@ -161,17 +145,6 @@ ReAct 在推理与动作之间交替：
 
 先形成较高层计划，再逐步执行：
 
-```text
-Goal
- ↓
-Plan: S1 → S2 → S3
- ↓
-Execute S1
- ↓
-Check observation
- ↓
-Continue / Modify / Replan
-```
 
 它比纯 ReAct 更强调全局结构，适合依赖关系明显、步骤较多的任务。但计划不是合同，环境变化或假设被证伪后必须允许重规划。
 
@@ -213,15 +186,6 @@ Continue / Modify / Replan
 
 例如“修复这个项目”太粗，可以拆为：
 
-```text
-复现问题
-→ 定位失败组件
-→ 建立根因假设
-→ 收集证据
-→ 选择最小修改
-→ 执行验证
-→ 审查 Diff
-```
 
 但也不应把每次 `grep`、`cat` 都提前写成计划节点，那属于执行层局部动作。
 
@@ -235,11 +199,6 @@ Continue / Modify / Replan
 - 汇合点；
 - 补偿和回滚路径。
 
-```text
-                ┌→ 查部署变更 ─┐
-复现 → 收集证据 ├→ 查错误日志 ─┼→ 根因判断 → 修复 → 验证
-                └→ 查资源指标 ─┘
-```
 
 ## 第四步：决定静态还是动态拆分
 
@@ -259,10 +218,6 @@ Continue / Modify / Replan
 
 生产系统通常采用混合方案：外层阶段固定，阶段内部动态探索。
 
-```text
-固定：任务受理 → 信息收集 → 分析 → 执行 → 验收
-动态：在“信息收集”和“分析”阶段由 Agent 选择下一步
-```
 
 ## 动态重规划何时触发
 

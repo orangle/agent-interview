@@ -29,10 +29,7 @@ flowchart TD
 
 SSE 基于 HTTP，服务端以 `text/event-stream` 持续推送事件：
 
-```text
-Client ── HTTP Request ──> Server
-Client <── token/status/tool events ── Server
-```
+> 对应流程已改为上方 Mermaid 图解。
 
 适合：
 
@@ -100,14 +97,6 @@ GET  /runs/{id}         查询权威状态
 
 需要语音和实时中断时，可以使用 WebSocket：
 
-```text
-WS Session
-  ├── user_audio
-  ├── model_audio
-  ├── interrupt
-  ├── tool_approval
-  └── state_update
-```
 
 ## 五、事件协议
 
