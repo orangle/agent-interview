@@ -4,6 +4,27 @@
 - 难度：进阶 / 系统设计
 - 标签：ReAct、Plan-and-Execute、Reflection、Orchestrator、Replanning
 
+
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[复杂任务] --> D{任务是否可一次决定}
+  D -->|是| R[ReAct 循环]
+  D -->|否| P[Planner 生成可验收步骤]
+  P --> E[Executor 执行当前步骤]
+  E --> V{验证是否通过}
+  V -->|通过| N{还有步骤吗}
+  N -->|是| E
+  N -->|否| F[完成]
+  V -->|失败| RP[Replanner 生成最小 Plan Patch]
+  RP --> E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 同义问法
 
 - Agent 设计范式有哪些？

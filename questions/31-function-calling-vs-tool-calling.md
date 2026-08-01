@@ -18,6 +18,27 @@
 - 用户提供的二手题库：`5.1`、`5.2`、`5.4`
 - [OpenAI Agents SDK：Tools](https://openai.github.io/openai-agents-python/tools/)：模型提出工具调用，本地或托管 Runtime 执行并返回结果。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+sequenceDiagram
+  participant App as Application
+  participant Model as Model
+  participant Runtime as Runtime
+  participant Tool as Tool/API
+  App->>Model: Messages + Tool Schemas
+  Model-->>Runtime: tool_call(name,args,call_id)
+  Runtime->>Runtime: 校验 权限 幂等
+  Runtime->>Tool: 执行真实能力
+  Tool-->>Runtime: result / error
+  Runtime-->>Model: tool_result(call_id,status,evidence)
+  Model-->>App: 最终答案或下一次调用
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **模型通常不直接执行你的业务函数，而是根据工具描述生成一个结构化“调用意图”；Runtime 校验、授权并执行，再把结果作为 Tool Result 返回模型。**

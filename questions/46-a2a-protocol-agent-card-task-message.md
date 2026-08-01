@@ -5,6 +5,26 @@
 - 标签：A2A、Agent Card、Task、Message、Artifact、Agent Interoperability
 - 时效性：基于 A2A `1.0.0` 规范，整理日期为 2026-08-01
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+sequenceDiagram
+  participant C as Client Agent
+  participant D as Agent Card / Discovery
+  participant S as Remote Agent
+  C->>D: 查询能力与认证方式
+  D-->>C: Agent Card
+  C->>S: 创建 Task + Message
+  S-->>C: Task 状态更新
+  C->>S: 追加 Message / 输入
+  S-->>C: Artifact
+  S-->>C: completed / failed / input-required
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **A2A 用于独立、可能不透明的 Agent 系统之间发现能力、发起有状态任务并交换消息与产物。** 它关注 Agent-to-Agent 协作，不要求对方暴露内部 Prompt、工具和推理实现。

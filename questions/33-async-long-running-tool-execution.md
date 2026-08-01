@@ -16,6 +16,29 @@
 
 - 用户提供的二手题库：`5.6`
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+stateDiagram-v2
+  [*] --> SUBMITTED
+  SUBMITTED --> RUNNING: worker 接单
+  RUNNING --> WAITING_EXTERNAL: 等待回调
+  WAITING_EXTERNAL --> RUNNING: 收到事件
+  RUNNING --> SUCCEEDED: 完成
+  RUNNING --> FAILED: 不可恢复错误
+  RUNNING --> RETRY_WAIT: 可重试错误
+  RETRY_WAIT --> RUNNING
+  SUBMITTED --> CANCELLED: 取消
+  RUNNING --> CANCELLED: 取消
+  SUCCEEDED --> [*]
+  FAILED --> [*]
+  CANCELLED --> [*]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **长工具不应占住一次 LLM 请求或 Web 连接等待到底，而应建模为可持久化的任务。** Tool Call 先返回 `task_id`，Runtime 把 Agent Run 转入等待或并行状态；任务完成后通过轮询、事件、Webhook 或消息队列唤醒，再从 Checkpoint 恢复。

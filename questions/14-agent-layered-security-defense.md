@@ -4,6 +4,24 @@
 - 难度：进阶 / 系统设计
 - 标签：Agent Security、Prompt Injection、Least Privilege、Sandbox、Guardrails
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[用户输入与外部内容] --> L1[输入与指令边界]
+  L1 --> L2[工具候选集最小化]
+  L2 --> L3[参数 Schema 与业务校验]
+  L3 --> L4[身份 权限 租户隔离]
+  L4 --> L5[沙箱与网络资源限制]
+  L5 --> L6[高风险动作审批]
+  L6 --> L7[审计 Trace 与异常检测]
+  L7 --> T[真实工具执行]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Agent 安全不能依赖 System Prompt。** Prompt 只能影响模型行为，真正的安全边界必须由身份、权限、工具网关、沙箱、数据策略、审批和审计以代码强制执行。

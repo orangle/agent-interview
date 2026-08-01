@@ -15,6 +15,28 @@
 
 **Agent Trace 不能只记录最终问答，而要记录每次决策所见上下文、模型与配置版本、结构化动作、工具证据、状态变化和验证结果。Replay 的目标不是机械重跑，而是能复现、对比和定位“从哪一步开始偏离”。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  R[一次 Agent Run] --> S1[Model Span]
+  R --> S2[Tool Span]
+  R --> S3[State Transition]
+  R --> S4[Checkpoint / Approval]
+  S1 --> T[统一 Trace]
+  S2 --> T
+  S3 --> T
+  S4 --> T
+  T --> P[Replay 重放]
+  P --> C[与基线轨迹比较]
+  C --> F[定位最早致错点]
+  F --> E[修复并回归评测]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么普通应用日志不够
 
 传统服务通常有：

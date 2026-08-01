@@ -31,6 +31,25 @@
 
 它涉及信息选择、状态建模、证据保真、成本和错误恢复，是 Agent 工程的核心问题。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  S[完整 Runtime State] --> F[相关性过滤]
+  M[长期 Memory] --> F
+  K[检索知识与工具结果] --> F
+  F --> B[Token Budget 分配]
+  B --> C[压缩与摘要]
+  C --> A[Context Assembly]
+  A --> L[LLM]
+  L --> T[决策或工具调用]
+  T --> S
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 上下文窗口像工作台，不是仓库。

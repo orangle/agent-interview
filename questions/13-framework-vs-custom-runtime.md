@@ -28,6 +28,23 @@
 - Anthropic, *Building Effective Agents*：建议从最简单、可组合的模式开始，只在收益值得时增加复杂度。
   - https://www.anthropic.com/engineering/building-effective-agents
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[系统需求] --> P{是否处于快速原型阶段}
+  P -->|是| F[使用成熟框架]
+  P -->|否| C{是否需要强控制 恢复 审计 多租户}
+  C -->|否| F
+  C -->|是| H[框架能力作为组件]
+  H --> R[自研核心 Runtime]
+  R --> S[状态机 权限 Checkpoint Trace]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **生产环境不是“框架”与“手写”的二选一。更合理的做法是分层决定哪些能力复用、哪些边界必须自己掌握。**

@@ -4,6 +4,26 @@
 - 难度：进阶 / 系统设计
 - 标签：Badcase、Root Cause、Golden Set、SFT、DPO、Data Flywheel
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  O[线上 Trace 与反馈] --> C[Badcase 聚类]
+  C --> A[最早致错点归因]
+  A --> T1[Prompt / Context 修复]
+  A --> T2[Tool / Runtime 修复]
+  A --> T3[模型或数据修复]
+  T1 --> E[回归评测]
+  T2 --> E
+  T3 --> E
+  E --> G[灰度上线]
+  G --> O
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Badcase 不是“用户没采纳”，也不是“答案看起来不好”。它是相对于明确任务标准的失败样本。** 数据飞轮的核心不是把线上数据都送去微调，而是：捕获失败、定位系统层、选择最便宜可靠的修复方式、回归验证并持续监控。

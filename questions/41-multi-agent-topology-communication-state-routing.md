@@ -4,6 +4,26 @@
 - 难度：进阶 / 系统设计
 - 标签：Multi-Agent、Supervisor、Handoff、Shared State、Routing
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[用户任务] --> S[Supervisor / Router]
+  S --> P[Planner Agent]
+  S --> R[Research Agent]
+  S --> E[Executor Agent]
+  P --> B[共享 Blackboard / State]
+  R --> B
+  E --> B
+  B --> V[Verifier Agent]
+  V --> S
+  S --> F[最终结果]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Multi-Agent 的本质不是“创建多个角色”，而是把一个复杂任务拆成多个有边界的决策单元，并明确控制权、状态所有权、通信协议和完成条件。**

@@ -5,6 +5,25 @@
 - 标签：MCP、Host、Client、Server、Resources、Prompts、Tools、JSON-RPC
 - 时效性：基于 MCP `2025-11-25` 规范，整理日期为 2026-08-01
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  H[MCP Host / Agent] --> C[MCP Client]
+  C <--> S[MCP Server]
+  S --> T[Tools]
+  S --> R[Resources]
+  S --> P[Prompts]
+  C -.stdio.-> S
+  C -.Streamable HTTP.-> S
+  H --> L[LLM 决策]
+  L --> C
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **MCP 是 LLM 应用与外部能力之间的标准化上下文与工具协议。** 它解决的是 Host 如何发现、协商并调用不同 Server 提供的能力，而不是替 Agent 决定业务流程，也不自动保证权限和安全。

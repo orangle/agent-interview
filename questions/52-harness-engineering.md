@@ -32,6 +32,26 @@
 - LangChain, *Frameworks, runtimes, and harnesses*：区分 Framework、Runtime 与 Harness 的价值层次。
   - https://docs.langchain.com/oss/python/concepts/products
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[用户目标] --> H[Agent Harness]
+  H --> C[Context Builder]
+  H --> T[Tool Registry]
+  H --> S[Sandbox / Workspace]
+  H --> P[Policy / Approval]
+  H --> O[Trace / Evaluation]
+  C --> M[Model]
+  M --> H
+  T --> E[外部系统]
+  S --> E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Harness 是包围模型的工作环境和控制系统，使模型能够在明确边界内持续行动、获得真实反馈并证明任务完成。Harness Engineering 就是系统性设计这套环境。**

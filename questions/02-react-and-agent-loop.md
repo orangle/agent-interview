@@ -35,6 +35,23 @@
 - 能否从论文范式过渡到生产级 Runtime；
 - 是否意识到“让模型多想几步”不等于系统就可靠。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  G[目标] --> T[Reason 思考]
+  T --> A[Act 选择动作]
+  A --> O[Observe 获取结果]
+  O --> C{目标是否完成}
+  C -->|否| T
+  C -->|是| F[Final Answer]
+  C -->|无进展或超预算| S[停止或升级人工]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 纯 CoT 可以让模型在内部推理，但它所依据的信息仍然主要来自输入上下文和模型参数。

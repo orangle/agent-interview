@@ -4,6 +4,25 @@
 - 难度：进阶 / 系统设计
 - 标签：Coding Agent、Sandbox、Test、Repair Loop、Harness
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  B[Bug / 失败日志] --> R[复现与定位]
+  R --> P[生成最小修改计划]
+  P --> C[编辑代码]
+  C --> T[运行针对性测试]
+  T --> V{验证通过}
+  V -->|否| A[分析新证据]
+  A --> R
+  V -->|是| D[Diff 审查与风险检查]
+  D --> O[输出修复证据]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Coding Agent 的可靠性不能依赖“让模型自检”，而要把代码变更放入可执行、可观察、可回滚的工程 Harness 中。** 模型负责提出修改和解释，编译器、测试、静态分析、运行环境和 Review Gate 提供外部真值。

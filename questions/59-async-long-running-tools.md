@@ -15,6 +15,31 @@
 
 **长工具不应该占住一次 LLM 请求或一个同步线程等待完成，而应被建模为有生命周期的外部任务：提交、等待、接收进度、完成、失败、取消、超时。Agent Runtime 保存任务句柄并暂停或并行推进其他无依赖工作。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+stateDiagram-v2
+  [*] --> CREATED
+  CREATED --> SUBMITTED
+  SUBMITTED --> RUNNING
+  RUNNING --> WAITING_CALLBACK
+  WAITING_CALLBACK --> RUNNING: progress event
+  RUNNING --> SUCCEEDED
+  RUNNING --> FAILED
+  RUNNING --> RETRY_WAIT
+  RETRY_WAIT --> RUNNING
+  CREATED --> CANCELLED
+  SUBMITTED --> CANCELLED
+  RUNNING --> CANCELLED
+  SUCCEEDED --> [*]
+  FAILED --> [*]
+  CANCELLED --> [*]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么同步等待有问题
 
 如果工具执行需要 10 分钟：

@@ -4,6 +4,24 @@
 - 难度：进阶 / 手撕设计
 - 标签：Parallel Tool Calling、DAG、Side Effect、Consistency、Scheduler
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  P[模型提出多个 Tool Call] --> D[构建依赖 DAG]
+  D --> C[读写集合与副作用冲突检测]
+  C --> A[可并行批次]
+  A --> T1[Tool A]
+  A --> T2[Tool B]
+  T1 --> J[结果 Join]
+  T2 --> J
+  J --> V[一致性验证与补偿]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **模型一次返回多个 Tool Call，只代表“候选动作可以一起提出”，不代表这些动作可以安全并行执行。** Runtime 必须基于数据依赖、资源冲突、副作用、幂等性和事务边界构建调度计划。

@@ -4,6 +4,27 @@
 - 难度：进阶 / 系统设计
 - 标签：LLM Gateway、Routing、Quota、Audit、Fallback、Caching
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  A[Agent / Application] --> G[LLM Gateway]
+  G --> I[统一协议与鉴权]
+  I --> R[模型路由与降级]
+  R --> P1[Provider A]
+  R --> P2[Provider B]
+  R --> P3[自建模型]
+  G --> Q[限流 配额 成本]
+  G --> O[日志 Trace 脱敏]
+  P1 --> G
+  P2 --> G
+  P3 --> G
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **大模型网关是业务应用与多个模型提供方之间的策略和治理层。** 它统一协议只是起点，真正价值在于身份、路由、配额、审计、可靠性和成本控制；但它不能隐藏所有模型能力差异，也不应变成一个无边界的“万能中间层”。

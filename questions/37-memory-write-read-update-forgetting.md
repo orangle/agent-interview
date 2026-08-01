@@ -4,6 +4,26 @@
 - 难度：进阶 / 系统设计
 - 标签：Memory Policy、Write Gate、Retrieval、Upsert、Forgetting、Pollution
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  O[新观察或用户事实] --> E[抽取候选记忆]
+  E --> V[真实性 敏感性 价值校验]
+  V --> D{与旧记忆关系}
+  D -->|新增| C[Create]
+  D -->|修正| U[Update + Version]
+  D -->|冲突| X[保留冲突与来源]
+  C --> R[按任务检索]
+  U --> R
+  X --> R
+  R --> F[衰减 淘汰 用户删除]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **长期记忆的难点不是存储，而是写入资格、事实合并、冲突处理和错误遗忘。** 每轮对话都写会产生噪音和污染；完全依赖模型自由写又会把猜测、临时情绪和错误结论固化。

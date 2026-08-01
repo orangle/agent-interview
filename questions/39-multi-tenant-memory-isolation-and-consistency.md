@@ -4,6 +4,23 @@
 - 难度：系统设计
 - 标签：Multi-tenant Memory、Isolation、Consistency、Backpressure、Caching
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  R[Memory 请求] --> I[身份与租户解析]
+  I --> K[tenant_id + user_id + namespace]
+  K --> P[权限与数据分类策略]
+  P --> S[分区存储与加密]
+  S --> V[版本与并发控制]
+  V --> A[审计日志]
+  A --> Q[检索结果]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **高并发 Memory 系统首先要保证身份与数据边界，其次才是性能。** 会话隔离靠全链路 Tenant/User/Session Key、授权过滤和存储分区；一致性则按业务风险选择“会话内读己所写、跨会话最终一致”或强一致路径，而不是把所有记忆都交给向量库。

@@ -25,6 +25,23 @@
 - Anthropic, *Building Effective Agents* 中的 Evaluator-Optimizer pattern。
   - https://www.anthropic.com/engineering/building-effective-agents
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  A[初始输出或轨迹] --> E[Evaluator 评估]
+  E --> D{是否达标}
+  D -->|是| F[接受结果]
+  D -->|否| R[Reflection 归因与建议]
+  R --> O[Optimizer 重新生成或修正]
+  O --> E
+  R --> M[Reflexion 写入可复用经验]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 这三个概念处在不同层次：

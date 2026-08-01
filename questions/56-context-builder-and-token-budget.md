@@ -15,6 +15,28 @@
 
 **Context Builder 是一个受预算约束的信息选择器，不是字符串拼接器。它需要从任务状态、近期事件、工具证据、长期记忆和规则中选择“当前决策最需要的信息”，并保留可回溯的原始证据引用。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  B[总 Token Budget] --> S1[System 与安全规则]
+  B --> S2[当前目标与计划]
+  B --> S3[最近对话]
+  B --> S4[工具证据]
+  B --> S5[检索知识与 Memory]
+  S1 --> P[优先级裁剪]
+  S2 --> P
+  S3 --> P
+  S4 --> P
+  S5 --> P
+  P --> C[压缩 去重 引用]
+  C --> M[最终 Context]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、Context 和 State 不相等
 
 ```text

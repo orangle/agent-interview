@@ -44,6 +44,33 @@
 - 是否知道不同数据和查询需要不同检索方法；
 - 是否能用指标定位瓶颈。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  subgraph Ingest[离线入库]
+    D[文档] --> P[解析与清洗]
+    P --> C[结构化分块]
+    C --> E[Embedding]
+    C --> B[关键词索引]
+    E --> V[向量库]
+    B --> X[倒排索引]
+  end
+  subgraph Query[在线查询]
+    Q[用户问题] --> R[路由与改写]
+    R --> V
+    R --> X
+    V --> F[融合召回]
+    X --> F
+    F --> K[Rerank]
+    K --> G[带引用生成]
+  end
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 RAG 的本质不是“给模型外挂知识库”，而是：

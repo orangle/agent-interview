@@ -15,6 +15,29 @@
 
 **Human-in-the-Loop 不是在前端弹一个“确认”按钮，而是把高风险动作转化为不可变审批请求，冻结动作参数和风险摘要，暂停 Run；审批结果经过鉴权、版本和过期校验后，Runtime 只执行被批准的那一个动作。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+stateDiagram-v2
+  [*] --> PROPOSED
+  PROPOSED --> VALIDATED
+  VALIDATED --> WAITING_APPROVAL: high risk
+  VALIDATED --> EXECUTING: low risk
+  WAITING_APPROVAL --> REJECTED: reject
+  WAITING_APPROVAL --> REVALIDATING: approve
+  REVALIDATING --> WAITING_APPROVAL: resource changed
+  REVALIDATING --> EXECUTING: still valid
+  EXECUTING --> SUCCEEDED
+  EXECUTING --> FAILED
+  REJECTED --> [*]
+  SUCCEEDED --> [*]
+  FAILED --> [*]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、哪些场景需要审批
 
 常见触发条件：

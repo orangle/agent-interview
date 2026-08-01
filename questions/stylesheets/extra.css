@@ -260,3 +260,24 @@
     text-align: center;
   }
 }
+
+/* Mermaid diagrams */
+.md-typeset .mermaid {
+  margin: 1.4rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.md-typeset .mermaid svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .md-typeset .mermaid {
+    margin-left: -0.35rem;
+    margin-right: -0.35rem;
+  }
+}
+

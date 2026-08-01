@@ -41,6 +41,28 @@
 - 是否区分“模型输出错误”“工具执行错误”和“业务拒绝”；
 - 是否考虑工具描述、数量和结果格式对模型决策的影响。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+sequenceDiagram
+  participant M as Model
+  participant R as Runtime
+  participant A as Auth/Policy
+  participant T as Tool
+  M->>R: tool_call(name,args)
+  R->>R: Schema 与业务校验
+  R->>A: 权限与风险检查
+  A-->>R: allow / approve / deny
+  R->>T: 带幂等键执行
+  T-->>R: 结构化结果或错误
+  R->>R: 脱敏、截断、归一化
+  R-->>M: tool_result(call_id,status,evidence)
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 Tool Calling 不是模型直接执行函数。

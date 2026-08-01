@@ -4,6 +4,24 @@
 - 难度：进阶 / 系统设计
 - 标签：Short-term Memory、Conversation State、Summary、Compaction、Token Budget
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  H[完整对话与事件流] --> W[滑动窗口保留最近轮次]
+  H --> S[阶段摘要]
+  H --> F[事实 决策 待办单独抽取]
+  W --> C[Context Builder]
+  S --> C
+  F --> C
+  C --> M[模型]
+  M --> H
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **长对话管理不是把最旧消息删掉，而是把会话拆成“可恢复的完整记录、结构化任务状态、可检索历史和当前模型上下文”。** 模型每轮只看到完成当前决策所需的信息，原始历史仍可回溯。

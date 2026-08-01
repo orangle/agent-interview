@@ -19,6 +19,23 @@
   - https://www.elastic.co/docs/solutions/search/hybrid-search
   - https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  Q[查询] --> B[BM25 稀疏召回]
+  Q --> V[向量稠密召回]
+  B --> N[分数归一化或 RRF]
+  V --> N
+  N --> D[去重与权限过滤]
+  D --> R[Cross-Encoder Rerank]
+  R --> C[最终 Context]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **BM25 与向量检索不是互相替代，而是在捕获不同类型的相关性。** BM25 擅长精确 Token、稀有词、错误码和标识符；Dense Retrieval 擅长同义表达和语义意图。混合检索的难点不是“各取 Top-10”，而是候选预算、分数不可比、重复结果、过滤和最终排序。

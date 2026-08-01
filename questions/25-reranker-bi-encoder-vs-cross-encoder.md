@@ -16,6 +16,21 @@
 
 - 用户提供的二手题库：`3.12`、`3.13`
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  Q[查询] --> B[Bi-Encoder 快速召回 Top-K]
+  D[文档库] --> B
+  B --> C[Cross-Encoder 联合编码 Query-Doc]
+  C --> R[精排 Top-N]
+  R --> G[生成或返回答案]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **粗召回优化“不要漏掉正确文档”，Reranker 优化“把最能回答问题的文档排到前面”。** 两者目标不同。Embedding 适合在大规模语料中快速生成候选，Reranker 适合在小候选集上做更精细的 Query–Document 联合判断。

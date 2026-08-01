@@ -25,6 +25,30 @@
 
 **Function Calling 是模型生成“动作提案”的协议，Tool Runtime 才是动作的执行者和安全边界。完整链路是：工具发现 → Schema 注入 → 模型决策 → 解析校验 → 鉴权审批 → 幂等执行 → 结果标准化 → 回填上下文 → 继续推理。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant A as Agent Runtime
+  participant M as Model
+  participant T as Tool
+  U->>A: 提交任务
+  A->>M: Context + Tool Schema
+  M-->>A: ToolCall
+  A->>A: 校验 权限 审批 幂等
+  A->>T: Execute
+  T-->>A: ToolResult
+  A->>A: Event + Checkpoint
+  A->>M: ToolResult + Updated Context
+  M-->>A: Final
+  A-->>U: 验证后的结果
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、角色边界
 
 ```text

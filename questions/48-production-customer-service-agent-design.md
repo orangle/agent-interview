@@ -4,6 +4,25 @@
 - 难度：系统设计
 - 标签：Customer Service Agent、Intent、State Machine、Tool、HITL、Evaluation
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[用户请求] --> I[意图 风险 身份识别]
+  I --> K[知识检索]
+  I --> T[业务工具]
+  K --> A[客服 Agent]
+  T --> A
+  A --> P{是否涉及高风险或低置信度}
+  P -->|是| H[人工坐席接管]
+  P -->|否| R[生成带证据回复]
+  R --> F[质量监控与反馈]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **生产客服 Agent 不是“LLM + 知识库”，而是确定性业务流程、检索问答、受控工具、会话状态和人工服务共同组成的混合系统。**

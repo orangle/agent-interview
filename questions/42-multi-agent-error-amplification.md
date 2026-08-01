@@ -4,6 +4,24 @@
 - 难度：进阶 / 系统设计
 - 标签：Multi-Agent、Error Propagation、Hallucination、Evidence、Consensus
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  E1[Agent A 错误假设] --> M1[消息传递]
+  M1 --> E2[Agent B 基于错误继续推理]
+  E2 --> M2[共享状态污染]
+  M2 --> E3[Agent C 执行错误动作]
+  E3 --> A[错误放大]
+  G1[独立证据与置信度] -.->|抑制| M1
+  G2[状态版本与验收门] -.->|抑制| M2
+  G3[Verifier] -.->|抑制| E3
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Multi-Agent 会放大错误，因为下游通常看不到上游原始证据，只看到已经压缩和解释过的结论。** 当错误结论被写入共享状态、继续规划或触发工具时，它会从“文本错误”升级为“系统状态错误”和“业务动作错误”。

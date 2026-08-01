@@ -15,6 +15,24 @@
 
 **Messages 是给模型看的上下文载体，State 是 Runtime 的真实执行状态，Event 是状态变化的事实记录。生产系统不要把三者混成一个不断增长的消息数组。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  E[Event Log 不可变事件] --> R[Reducer]
+  R --> S[RunState 当前真相]
+  S --> C[Context Builder]
+  C --> M[Model Messages 投影]
+  M --> D[ModelDecision]
+  D --> E2[新事件 ToolCall Result StatePatch]
+  E2 --> E
+  S --> K[Checkpoint]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么只存 messages 不够
 
 很多 Demo 只有：

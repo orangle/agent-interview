@@ -4,6 +4,23 @@
 - 难度：基础 / 进阶
 - 标签：Few-shot、Reasoning、Examples、Tool Calling、Prompt
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[任务] --> E{是否存在稳定的行为范式}
+  E -->|是| F[Few-shot 展示输入与正确动作]
+  E -->|否| Z[零样本规则]
+  F --> P[模型生成可观察的计划或结构化决策]
+  Z --> P
+  P --> R[Runtime 执行与验证]
+  R --> T[保留结果与证据 不依赖隐藏思维链]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Few-shot 用于展示任务边界和期望行为；推理提示用于帮助模型处理需要分解的问题。二者都不是越多越好。** Agent 的工具、状态和验证应由 Runtime 明确提供，不能依赖模型输出冗长“思维过程”来保证正确。

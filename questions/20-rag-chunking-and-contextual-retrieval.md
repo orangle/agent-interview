@@ -23,6 +23,23 @@
 - Anthropic, Contextual Retrieval：在索引前给每个 chunk 增加与全文相关的简短上下文，再构建向量与关键词索引。
   - https://www.anthropic.com/engineering/contextual-retrieval
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  D[原始文档] --> P[保留标题 章节 表格关系]
+  P --> C[语义分块]
+  C --> X[补充文档级上下文]
+  X --> E[Embedding 与关键词索引]
+  Q[查询] --> R[召回]
+  E --> R
+  R --> K[返回块 + 父级上下文]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **分块不是把文档切到某个固定 Token 数，而是在“检索可辨识性”和“回答所需完整性”之间建立映射。**

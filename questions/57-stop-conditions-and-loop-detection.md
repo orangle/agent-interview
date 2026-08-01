@@ -15,6 +15,28 @@
 
 **停止不是一个条件，而是三类机制共同决定：模型终止信号、代码层硬预算、任务完成验证。死循环检测则要同时观察动作重复、状态无进展和结果无新信息。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  S[当前 State] --> H[步数 时间 Token 成本硬限制]
+  S --> R[重复动作与周期检测]
+  S --> P[状态进展度检测]
+  S --> V[业务完成验证]
+  H --> D{Stop Policy}
+  R --> D
+  P --> D
+  V --> D
+  D -->|continue| N[下一轮]
+  D -->|replan| RP[重规划]
+  D -->|pause| A[人工或外部输入]
+  D -->|terminal| T[成功或失败结束]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么不能只依赖模型输出 Final
 
 模型可能：

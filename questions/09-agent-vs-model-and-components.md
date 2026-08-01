@@ -36,6 +36,26 @@
 
 只回答“规划、记忆、工具、执行”通常不够，因为它没有解释这些组件如何形成闭环，也忽略了验证、状态、权限和停止条件。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  G[Goal 目标] --> C[Controller / Policy]
+  S[State 状态] --> C
+  O[Observation 观察] --> C
+  C --> M[LLM 推理]
+  M --> A[Action 候选动作]
+  A --> R[Runtime 校验与执行]
+  R --> E[Environment 环境]
+  E --> O
+  R --> S
+  S --> T{Termination 终止条件}
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **大模型是一个概率式决策与生成组件；Agent 是把模型放进环境反馈闭环中的任务执行系统。**

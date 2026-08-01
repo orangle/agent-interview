@@ -4,6 +4,23 @@
 - 难度：基础 / 进阶
 - 标签：SSE、WebSocket、Streaming、Reconnect、Agent UI
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[Agent 前端需求] --> D{通信方向}
+  D -->|服务端持续推送为主| S[SSE]
+  D -->|高频双向交互| W[WebSocket]
+  S --> E[Token Event Tool Status Trace]
+  W --> B[实时控制 协作 终端]
+  E --> R[断线重连 + Last-Event-ID]
+  B --> H[心跳 顺序号 背压]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **SSE 适合“客户端发一次请求，服务端持续推送文本和状态”的主流 Agent 交互；WebSocket 适合持续双向、低延迟和可打断的会话。** 选择依据是交互方向、连接生命周期、基础设施和可靠性，而不是“WebSocket 更高级”。

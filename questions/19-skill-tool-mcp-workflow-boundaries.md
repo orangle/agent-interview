@@ -28,6 +28,24 @@
 - Anthropic, *Building Effective Agents*：Workflow 使用预定义代码路径编排模型和工具。
   - https://www.anthropic.com/engineering/building-effective-agents
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  U[用户目标] --> S[Skill 方法与领域知识]
+  S --> A[Agent 决策]
+  A --> W[Workflow 确定性编排]
+  A --> T[Tool 原子能力]
+  T --> M[MCP 标准化发现与调用]
+  W --> R[Runtime 执行]
+  M --> R
+  R --> E[外部系统]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 这四个概念解决的是不同问题：

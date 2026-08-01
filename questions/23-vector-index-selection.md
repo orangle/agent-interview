@@ -19,6 +19,28 @@
   - https://milvus.io/docs/index-explained.md
   - https://milvus.io/docs/index_selection.md
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  N[向量规模与延迟目标] --> E{是否需要精确检索}
+  E -->|是| F[FLAT]
+  E -->|否| M{内存是否充足}
+  M -->|是| H[HNSW]
+  M -->|否| I[IVF]
+  I --> P{是否需要进一步压缩}
+  P -->|是| Q[PQ / IVF-PQ]
+  P -->|否| I2[IVF-Flat]
+  F --> B[在真实数据上 Benchmark]
+  H --> B
+  Q --> B
+  I2 --> B
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **向量索引是在召回率、查询延迟、构建时间、更新成本和内存之间做近似搜索的工程交换。** 不存在脱离数据规模、维度、更新模式和 SLA 的“最佳索引”。

@@ -4,6 +4,26 @@
 - 难度：进阶
 - 标签：Prompt Robustness、Instruction Conflict、Long Context、Tool Schema、Evaluation
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  P[Prompt 版本] --> T[对抗与边界测试集]
+  T --> V1[格式稳定性]
+  T --> V2[工具选择稳定性]
+  T --> V3[注入抵抗]
+  T --> V4[长上下文稳定性]
+  V1 --> G[回归门禁]
+  V2 --> G
+  V3 --> G
+  V4 --> G
+  G --> D[灰度发布]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Prompt 失效往往不是措辞不够“强”，而是指令冲突、上下文噪音、模型能力、工具契约和 Runtime 边界共同造成。** 鲁棒性来自减少 Prompt 承担的职责，把确定规则下沉到代码，并用评测验证不同输入和长任务下的行为。

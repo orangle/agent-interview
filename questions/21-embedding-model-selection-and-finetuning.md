@@ -19,6 +19,23 @@
 - MTEB：Embedding 模型应按任务、语言和数据集评测，而不是只看一个总榜。
   - https://github.com/embeddings-benchmark/mteb
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[业务检索任务] --> D[构建领域评测集]
+  D --> B[比较候选 Embedding]
+  B --> M[Recall@K MRR 延迟 成本]
+  M --> G{通用模型是否达标}
+  G -->|是| S[直接使用并监控漂移]
+  G -->|否| F[领域数据微调或蒸馏]
+  F --> M
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Embedding 选型本质是选择一个“语义相似度定义”。** 模型把文本映射到向量空间，业务真正关心的是：在自己的查询和文档分布下，相关内容是否靠近、不相关内容是否分开。

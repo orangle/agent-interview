@@ -29,6 +29,23 @@
 - OWASP System Prompt Leakage：权限、密钥和安全控制不应依赖 Prompt 保密。
   - https://genai.owasp.org/llmrisk/llm072025-system-prompt-leakage/
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  P1[角色与目标] --> S[System Prompt]
+  P2[行为边界] --> S
+  P3[工具使用规则] --> S
+  P4[输出契约] --> S
+  P5[失败与升级策略] --> S
+  S --> M[模型决策]
+  M --> R[Runtime 强制权限 校验 幂等]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 普通 Chat Prompt 主要约束 **一次回答的角色、内容和风格**；Agent System Prompt 还需要约束 **多步执行过程中的决策行为**：

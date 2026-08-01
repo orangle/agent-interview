@@ -4,6 +4,27 @@
 - 难度：进阶 / 系统设计
 - 标签：Memory、Working Memory、Semantic、Episodic、Procedural、State
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  S1[Runtime State 当前执行真相] --> C[Context Builder]
+  S2[短期会话记忆] --> C
+  S3[长期语义记忆] --> C
+  S4[情节与经验记忆] --> C
+  S5[用户事实与偏好] --> C
+  C --> M[模型当前上下文]
+  M --> W[受策略约束的 Memory Write]
+  W --> S2
+  W --> S3
+  W --> S4
+  W --> S5
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Agent Memory 不是一个向量数据库，也不是完整聊天记录。它是按用途、生命周期、正确性要求和访问模式分层管理的信息系统。**

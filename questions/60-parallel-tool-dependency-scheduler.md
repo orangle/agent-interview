@@ -15,6 +15,25 @@
 
 **模型给出的并行 Tool Calls 只能视为候选计划。Runtime 必须根据数据依赖、资源冲突、副作用、幂等性和并发预算构建执行 DAG，再由调度器并行执行无依赖且无冲突的节点。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  P[Tool Calls] --> D[依赖与读写集合分析]
+  D --> A[批次 1]
+  A --> T1[读取日志]
+  A --> T2[读取发布记录]
+  T1 --> J[Join Evidence]
+  T2 --> J
+  J --> B[批次 2]
+  B --> T3[执行诊断]
+  T3 --> V[验证与提交状态]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么不能直接 `gather`
 
 错误示例：

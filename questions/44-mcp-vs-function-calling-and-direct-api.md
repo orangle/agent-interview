@@ -5,6 +5,26 @@
 - 标签：MCP、Function Calling、API、Integration、Tool Gateway
 - 时效性：整理日期为 2026-08-01
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  M[模型] --> F[Function Calling 调用意图]
+  F --> R[Agent Runtime]
+  R --> D{工具接入方式}
+  D -->|进程内| L[本地函数]
+  D -->|固定系统| A[直接 HTTP / gRPC API]
+  D -->|标准化发现与互操作| C[MCP Client]
+  C --> S[MCP Server]
+  L --> E[真实能力]
+  A --> E
+  S --> E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Function Calling 是模型输出“调用哪个能力、传什么参数”的机制；MCP 是 Host 与外部 Server 发现和交换能力的协议；HTTP/gRPC API 是真实业务服务接口。** 三者位于不同层，可以组合使用，不是互斥选项。

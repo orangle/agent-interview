@@ -4,6 +4,22 @@
 - 难度：进阶
 - 标签：Memory Cold Start、User Preference、Default Policy、Progressive Profiling
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  N[新用户或新 Agent] --> D[显式偏好与初始配置]
+  D --> B[安全默认行为]
+  B --> O[观察少量高价值信号]
+  O --> C[候选记忆需确认]
+  C --> M[逐步个性化]
+  M --> F[持续反馈与纠错]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **冷启动不是想办法快速“猜出用户画像”，而是在信息不足时安全工作，并通过最少打扰逐步获得高价值事实。** 错误画像的长期影响可能比没有画像更差。

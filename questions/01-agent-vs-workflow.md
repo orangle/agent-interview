@@ -34,6 +34,25 @@
 - 能不能把业务问题拆成“确定部分”和“不确定部分”；
 - 是否做过真实系统，而不是只跑过框架 Demo。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  R[业务需求] --> D{控制流程是否确定}
+  D -->|确定| W[Workflow 编排]
+  D -->|存在开放决策| A[受约束 Agent]
+  W --> V[确定性校验与执行]
+  A --> O[观察环境]
+  O --> P[模型提出下一步]
+  P --> G[Runtime 校验与执行]
+  G --> O
+  G --> V
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 Workflow 是：

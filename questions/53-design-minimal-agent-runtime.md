@@ -50,6 +50,29 @@
 
 **最小 Agent Runtime 本质上是一个受预算和状态机约束的控制循环：构造上下文、调用模型、解析决策、执行受控动作、记录观察、更新状态，直到通过可验证条件进入终态。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  READY --> BUILD_CONTEXT
+  BUILD_CONTEXT --> MODEL_INFERENCE
+  MODEL_INFERENCE -->|tool_call| VALIDATE
+  MODEL_INFERENCE -->|final| VERIFY_COMPLETION
+  MODEL_INFERENCE -->|approval| WAITING_APPROVAL
+  VALIDATE --> AUTHORIZE
+  AUTHORIZE --> EXECUTE_TOOL
+  EXECUTE_TOOL --> APPEND_EVENT
+  APPEND_EVENT --> CHECKPOINT
+  CHECKPOINT --> BUILD_CONTEXT
+  VERIFY_COMPLETION -->|通过| SUCCEEDED
+  VERIFY_COMPLETION -->|未通过| BUILD_CONTEXT
+  WAITING_APPROVAL --> CHECKPOINT
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、先划清职责边界
 
 ### 模型负责什么

@@ -5,6 +5,26 @@
 - 标签：Coding Agent、Claude Code、Codex、Cursor、CLI、IDE、Cloud Agent
 - 时效性：产品变化快，整理日期为 2026-08-01
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  N[Coding Agent 产品] --> I[交互形态 IDE CLI 云端]
+  N --> C[上下文与代码索引]
+  N --> T[工具 沙箱 测试能力]
+  N --> A[自主程度与审批]
+  N --> E[评估 可观测性 成本]
+  I --> D[按团队流程与风险选型]
+  C --> D
+  T --> D
+  A --> D
+  E --> D
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **Coding Agent 不应按“谁最强”比较，而应按运行位置、交互方式、上下文获取、工具权限、后台与并行任务、验证闭环、扩展方式和企业治理比较。** 模型只是其中一层，工作环境和反馈系统经常决定实际效果。

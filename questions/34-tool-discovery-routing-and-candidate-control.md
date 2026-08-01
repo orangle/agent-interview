@@ -4,6 +4,23 @@
 - 难度：进阶 / 系统设计
 - 标签：Tool Discovery、Tool Routing、Registry、Semantic Search、Candidate Set
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[当前任务与状态] --> R[语义 Tool Router]
+  T[Tool Registry] --> R
+  R --> F[权限 环境 风险过滤]
+  F --> K[Top-K 候选工具]
+  K --> M[模型选择具体工具]
+  M --> V[Runtime 再次校验]
+  V --> E[执行]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **工具路由的目标不是让模型从全部工具中“自由选择”，而是根据用户、任务和状态构造一个最小、合法、区分度高的候选集。** 工具越多，Schema Token、选择歧义、越权风险和错误调用都会上升。

@@ -5,6 +5,25 @@
 - 标签：LangChain、LangGraph、LangSmith、AutoGen、CrewAI、ADK、Framework Selection
 - 时效性：框架变化快，整理日期为 2026-08-01
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  R[需求] --> C{核心复杂度在哪里}
+  C -->|简单工具调用| S[轻量 SDK]
+  C -->|显式状态图与恢复| G[Graph / Workflow 框架]
+  C -->|多 Agent 协作| M[Multi-Agent 框架]
+  C -->|企业平台控制面| H[自研 Runtime + 选用组件]
+  S --> E[PoC 与 Benchmark]
+  G --> E
+  M --> E
+  H --> E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **框架选型不是比较功能清单，而是确定你需要哪一层抽象：模型与工具集成、Agent Loop、持久化 Runtime、多 Agent 通信，还是可观测和部署平台。**

@@ -15,6 +15,27 @@
 
 **Planner 负责生成可执行、可验收的步骤和依赖；Executor 只执行当前可运行步骤并产出事实；Replanner 根据环境变化和验证结果做最小必要修改。三者通过结构化状态交互，而不是共享一段自由文本。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  G[Goal] --> P[Planner]
+  P --> PL[Plan: 可执行 可验收步骤]
+  PL --> E[Executor 执行当前步骤]
+  E --> O[Observation]
+  O --> V{验收通过}
+  V -->|是| N{计划完成}
+  N -->|否| E
+  N -->|是| F[Final]
+  V -->|否| R[Replanner]
+  R --> PP[最小 Plan Patch]
+  PP --> E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么需要分层
 
 单一 ReAct Loop 的问题：

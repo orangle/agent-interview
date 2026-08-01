@@ -37,6 +37,26 @@
 - 协作成本、错误传播和状态一致性如何控制；
 - 多 Agent 是模型角色，还是普通的软件模块换了名字。
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  Q[任务] --> C{是否存在清晰独立角色与上下文边界}
+  C -->|否| S[单 Agent + 多工具]
+  C -->|是| I{并行收益是否大于协调成本}
+  I -->|否| S
+  I -->|是| M[Multi-Agent]
+  M --> P[Supervisor / Router]
+  P --> A1[专业 Agent A]
+  P --> A2[专业 Agent B]
+  A1 --> J[共享状态与验收]
+  A2 --> J
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 先建立直觉
 
 多 Agent 不是让多个模型开会。

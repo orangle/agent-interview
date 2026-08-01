@@ -15,6 +15,25 @@
 
 **Checkpoint 不是简单保存 messages，而是保存一个“可安全恢复的执行边界”：当前状态版本、正在执行的节点、待处理动作、已经发生的副作用、预算和事件位置。恢复时必须先对账，再决定继续、重试或补偿。**
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart TD
+  A[动作准备] --> P[记录 Pending Effect + 幂等键]
+  P --> E[执行外部副作用]
+  E --> R[记录 Effect Result]
+  R --> C[保存 Checkpoint]
+  C --> N[进入下一状态]
+  X[服务重启] --> L[加载最新 Checkpoint]
+  L --> Q{Effect 是否已有结果}
+  Q -->|有| N
+  Q -->|无| E
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 一、为什么恢复比保存更难
 
 最危险的故障窗口：

@@ -16,6 +16,24 @@
 
 - 用户提供的二手题库：`5.3`
 
+<!-- mermaid-diagram:start -->
+
+## 可视化图解
+
+```mermaid
+flowchart LR
+  R[大体量 Tool Result] --> S[结构化解析]
+  S --> F[错误与关键字段优先]
+  F --> C[摘要 压缩 去重]
+  C --> M[进入模型 Context]
+  S --> O[原始结果对象存储]
+  O --> E[Evidence Ref]
+  E --> M
+  M --> A[答案可回溯到原始证据]
+```
+
+<!-- mermaid-diagram:end -->
+
 ## 核心结论
 
 **大结果处理不是简单截断，而是把“原始证据存储”和“模型工作上下文”分离。** 工具应返回小而结构化的观察、统计和证据引用；原始结果保存到 Artifact Store，模型需要时通过分页、过滤或 Drill-down 工具继续读取。
