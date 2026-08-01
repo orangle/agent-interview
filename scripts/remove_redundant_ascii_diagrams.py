@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 QUESTIONS = ROOT / "questions"
 MERMAID_MARKER = "<!-- mermaid-diagram:start -->"
+NOTE = "> 对应流程使用 Mermaid 图解展示。"
 
 TEXT_FENCE = re.compile(r"```text\n(?P<body>.*?)\n```", re.DOTALL)
 BOX_CHARS = set("↓↑←→↔⇒⇢├└┌┐┬┴│─")
@@ -62,6 +63,10 @@ def clean_file(path: Path) -> bool:
     if MERMAID_MARKER not in original:
         return False
 
+    original = original.replace(
+        "> 对应流程已改为上方 Mermaid 图解。",
+        NOTE,
+    )
     replaced = 0
 
     def replace(match: re.Match[str]) -> str:
@@ -71,12 +76,12 @@ def clean_file(path: Path) -> bool:
             return match.group(0)
         replaced += 1
         if replaced == 1:
-            return "> 对应流程已改为上方 Mermaid 图解。"
+            return NOTE
         return ""
 
     updated = TEXT_FENCE.sub(replace, original)
     updated = re.sub(r"\n{4,}", "\n\n\n", updated)
-    if updated == original:
+    if updated == path.read_text(encoding="utf-8"):
         return False
     path.write_text(updated, encoding="utf-8")
     print(f"cleaned {path.relative_to(ROOT)}: {replaced} diagram block(s)")
