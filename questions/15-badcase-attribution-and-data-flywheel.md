@@ -60,7 +60,7 @@ flowchart LR
 
 ## 三、归因树
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 先定位第一处错误，而不是看到最终答案错就改 Prompt。
 

@@ -56,7 +56,7 @@ flowchart LR
 
 最简单形式：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 Reflection 可能由：
 

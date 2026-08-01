@@ -93,7 +93,7 @@ flowchart LR
 
 ## 推荐的分层架构
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 ### 原始层
 

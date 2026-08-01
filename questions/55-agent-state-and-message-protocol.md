@@ -192,7 +192,7 @@ def apply_patch(state, patch):
 
 状态不能随意跳转：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 例如：
 

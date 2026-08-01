@@ -108,7 +108,7 @@ class ToolResult:
 
 ## 三、完整状态流转
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 ## 四、核心伪代码
 

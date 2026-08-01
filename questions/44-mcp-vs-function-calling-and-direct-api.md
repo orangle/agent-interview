@@ -31,7 +31,7 @@ flowchart TD
 
 ## 一、分层关系
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 模型通常不关心底层是 MCP 还是 HTTP，只看到稳定 Tool Contract。
 

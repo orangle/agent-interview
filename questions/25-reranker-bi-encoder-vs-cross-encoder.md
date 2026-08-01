@@ -76,7 +76,7 @@ score = Encoder([query, document])
 
 ## 三、标准两阶段架构
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 候选数量必须由 Recall–Latency 曲线决定。召回太少，正确文档进不来；召回太多，Reranker 延迟和成本上升，而且低质量候选增加排序难度。
 

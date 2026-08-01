@@ -41,7 +41,7 @@ flowchart LR
 
 传统服务通常有：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 Agent 则是：
 

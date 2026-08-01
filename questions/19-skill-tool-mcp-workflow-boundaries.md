@@ -65,7 +65,7 @@ flowchart TD
 
 以 Agent Skills 为例，一个 Skill 通常包含：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 Skill 的价值不只是复用 Prompt，而是把以下内容打包：
 

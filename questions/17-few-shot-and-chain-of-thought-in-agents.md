@@ -65,7 +65,7 @@ flowchart TD
 
 从案例库检索相关示例：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 必须避免：
 

@@ -82,7 +82,7 @@ class ExternalTask:
 
 ## 三、状态机
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 `UNKNOWN` 很重要：无法确认任务状态时，不应立即当作失败并重新提交。
 

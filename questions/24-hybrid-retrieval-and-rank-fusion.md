@@ -122,7 +122,7 @@ final = α * normalized_bm25 + (1-α) * normalized_dense
 
 可采用动态预算：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 初始可以 1:1 作为基线，但最终必须通过 Query 分桶评测，而不是形成永久规则。
 

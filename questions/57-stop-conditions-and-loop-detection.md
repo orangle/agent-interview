@@ -211,7 +211,7 @@ search_logs(service=A)
 
 ### 2. 参数抖动
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 ### 3. 双状态振荡
 

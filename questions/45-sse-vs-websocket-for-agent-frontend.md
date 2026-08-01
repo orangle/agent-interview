@@ -29,7 +29,7 @@ flowchart TD
 
 SSE 基于 HTTP，服务端以 `text/event-stream` 持续推送事件：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 适合：
 

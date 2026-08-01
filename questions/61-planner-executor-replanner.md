@@ -284,7 +284,7 @@ class PlanPatch:
 
 正确策略：
 
-> 对应流程已改为上方 Mermaid 图解。
+> 对应流程使用 Mermaid 图解展示。
 
 ## 九、重规划抖动控制
 
