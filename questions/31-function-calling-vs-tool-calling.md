@@ -16,8 +16,7 @@
 ## 来源
 
 - 用户提供的二手题库：`5.1`、`5.2`、`5.4`
-- OpenAI Agents SDK Tools：模型提出工具调用，本地或托管 Runtime 执行并返回结果。
-  - https://openai.github.io/openai-agents-python/tools/
+- [OpenAI Agents SDK：Tools](https://openai.github.io/openai-agents-python/tools/)：模型提出工具调用，本地或托管 Runtime 执行并返回结果。
 
 ## 核心结论
 
