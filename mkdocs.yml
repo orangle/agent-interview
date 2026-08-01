@@ -8,6 +8,9 @@ edit_uri: edit/main/questions/
 docs_dir: questions
 site_dir: site
 
+hooks:
+  - hooks/normalize_source_links.py
+
 exclude_docs: |
   README.md
 
@@ -142,6 +145,7 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
+  - pymdownx.magiclink
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
