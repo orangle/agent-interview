@@ -1,142 +1,101 @@
-# Canonical Question Backlog
+# Agent Interview Question Index
 
-原始题库中的 115 个问法被合并为 `Q001–Q052` 共 52 道主问题；为国内面试的现场设计与原理追问，后续新增 `Q053–Q063`。
+原始题库中的 115 个问法已去重为 `Q001–Q052` 共 52 道主问题，并新增 `Q053–Q063` 共 11 道国内面试原理手撕题。
 
-题号是稳定 ID。某题尚未完成时不会被后续题覆盖，因此看到 `Q019 → Q052` 的跳号，只说明中间题目仍在本文件中待回答或待核验。
-
-## 状态说明
-
-- `已完成`：已有可学习的深度答案；
-- `待回答`：已分类、去重，等待研究与撰写；
-- `需核验`：涉及快速变化的产品、版本、协议或未经证实的数据。
+**当前状态：63 / 63 已完成。**
 
 ## A. Agent 基础、Runtime 与安全
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q001 | 已完成 | Agent 和 Workflow 的本质区别是什么？ | `1.3` |
-| Q002 | 已完成 | ReAct 与 Agent Loop 为什么有效，又有什么局限？ | `1.4` `1.9` `12.1` `12.2` `12.4` |
-| Q003 | 已完成 | Agent 如何判断信息已经足够，并避免死循环？ | `1.9` `1.16` `12.4` |
-| Q004 | 已完成 | 如何让 Tool Calling 在生产环境中可靠？ | `5.5` |
-| Q005 | 已完成 | Agent 的 Context Engineering 应该怎么做？ | `1.6` `2.3` `5.3` `6.6` `6.8` |
-| Q006 | 已完成 | 什么时候用单 Agent，什么时候用 Multi-Agent？ | `7.1` |
-| Q007 | 已完成 | 如何建立 Agent 评估体系？ | `1.12` `1.13` `9.3` `9.4` |
-| Q008 | 已完成 | 如何设计一个生产可用的 RAG 系统？ | `3.1` |
-| Q009 | 已完成 | Agent 与大模型的本质区别是什么？一个 Agent 至少需要哪些组件？ | `1.1` `1.2` |
-| Q010 | 已完成 | Agent 有哪些常见设计范式？复杂任务如何拆分与动态重规划？ | `1.4` `1.5` `1.6` |
-| Q011 | 已完成 | Reflection、Reflexion 和 Evaluator-Optimizer 有什么区别？ | `1.7` `1.16` |
-| Q012 | 待回答 | Coding Agent 经常生成错误代码时，如何建立可验证的修复闭环？ | `1.8` |
-| Q013 | 已完成 | 生产环境什么时候使用 Agent 框架，什么时候自己实现核心 Runtime？ | `1.10` `1.15` |
-| Q014 | 待回答 | Agent 的分层安全防御应该如何设计？ | `1.11` `2.4` `9.2` |
-| Q015 | 待回答 | Badcase 如何定义、归因并形成数据飞轮？ | `1.12` `1.13` `1.14` |
+- [Q001 Agent 和 Workflow 的本质区别](./01-agent-vs-workflow.md)
+- [Q002 ReAct 与 Agent Loop](./02-react-and-agent-loop.md)
+- [Q003 停止条件与死循环控制](./03-agent-stop-and-loop-control.md)
+- [Q004 生产级 Tool Calling 可靠性](./04-reliable-tool-calling.md)
+- [Q005 Context Engineering](./05-context-engineering.md)
+- [Q006 单 Agent 与 Multi-Agent 选型](./06-single-vs-multi-agent.md)
+- [Q007 Agent 评估体系](./07-agent-evaluation.md)
+- [Q008 生产级 RAG 总体设计](./08-production-rag.md)
+- [Q009 Agent 与大模型的本质区别](./09-agent-vs-model-and-components.md)
+- [Q010 Agent 设计范式、任务拆分与重规划](./10-agent-patterns-task-decomposition-replanning.md)
+- [Q011 Reflection、Reflexion 与 Evaluator-Optimizer](./11-reflection-reflexion-evaluator-optimizer.md)
+- [Q012 Coding Agent 可验证修复闭环](./12-coding-agent-verifiable-repair-loop.md)
+- [Q013 Agent 框架与自研 Runtime 的选型](./13-framework-vs-custom-runtime.md)
+- [Q014 Agent 分层安全防御](./14-agent-layered-security-defense.md)
+- [Q015 Badcase 归因与数据飞轮](./15-badcase-attribution-and-data-flywheel.md)
 
 ## B. Prompt、Context 与 Skill
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q016 | 已完成 | Agent 的 System Prompt 应该怎么写？与普通 Chat Prompt 有什么不同？ | `2.1` |
-| Q017 | 待回答 | Few-shot 与 Chain-of-Thought 在 Agent 中应该如何使用？ | `2.2` |
-| Q018 | 待回答 | Agent Prompt 为什么会失效？如何提高鲁棒性？ | `2.3` |
-| Q019 | 已完成 | Skill、Tool、MCP Server 和 Workflow 的边界是什么？ | `2.5` |
+- [Q016 Agent System Prompt 设计](./16-agent-system-prompt-design.md)
+- [Q017 Few-shot 与推理提示在 Agent 中的使用](./17-few-shot-and-chain-of-thought-in-agents.md)
+- [Q018 Agent Prompt 鲁棒性](./18-agent-prompt-robustness.md)
+- [Q019 Skill、Tool、MCP Server 与 Workflow 的边界](./19-skill-tool-mcp-workflow-boundaries.md)
 
 ## C. RAG 与知识系统
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q020 | 待回答 | RAG 如何分块并避免语义截断？Contextual Retrieval 解决了什么问题？ | `3.2` `3.3` `3.7` |
-| Q021 | 待回答 | Embedding 模型如何选型？什么时候微调 Embedding 或 Reranker？ | `3.4` `3.20` |
-| Q022 | 待回答 | RAG 的查询路由与查询重写应该怎么设计？ | `3.5` `3.6` |
-| Q023 | 待回答 | FLAT、IVF、PQ、HNSW 等向量索引如何选择？ | `3.8` `3.9` |
-| Q024 | 待回答 | BM25 与向量检索如何做混合召回和结果融合？ | `3.10` `3.11` |
-| Q025 | 待回答 | 为什么需要 Reranker？Bi-Encoder 与 Cross-Encoder 如何取舍？ | `3.12` `3.13` |
-| Q026 | 待回答 | 如何分层评估 RAG 的检索、生成与端到端效果？ | `3.14` `3.15` `9.4` |
-| Q027 | 待回答 | RAG 如何处理图片、表格、代码和复杂 PDF？ | `3.16` `3.17` `3.18` |
-| Q028 | 待回答 | 长上下文模型会替代 RAG 吗？ | `3.19` |
-| Q029 | 待回答 | Agent/RAG 的幻觉从哪里产生？如何检测、归因和抑制？ | `3.21` `4.1` `4.2` `4.3` `4.5` |
-| Q030 | 待回答 | 新旧知识冲突、文档更新和版本回滚如何设计？ | `3.22` `3.23` `4.4` |
+- [Q020 RAG 分块与 Contextual Retrieval](./20-rag-chunking-and-contextual-retrieval.md)
+- [Q021 Embedding 选型与微调](./21-embedding-model-selection-and-finetuning.md)
+- [Q022 查询路由与查询重写](./22-rag-query-routing-and-rewriting.md)
+- [Q023 FLAT、IVF、PQ、HNSW 索引选型](./23-vector-index-selection.md)
+- [Q024 BM25 与向量混合召回](./24-hybrid-retrieval-and-rank-fusion.md)
+- [Q025 Reranker、Bi-Encoder 与 Cross-Encoder](./25-reranker-bi-encoder-vs-cross-encoder.md)
+- [Q026 RAG 分层评估](./26-rag-evaluation-system.md)
+- [Q027 图片、表格、代码和复杂 PDF](./27-rag-complex-documents-and-multimodal.md)
+- [Q028 长上下文与 RAG](./28-long-context-vs-rag.md)
+- [Q029 Agent/RAG 幻觉检测与治理](./29-agent-rag-hallucination-detection-and-mitigation.md)
+- [Q030 知识冲突、版本与更新](./30-knowledge-conflict-versioning-and-updates.md)
 
 ## D. Tool Calling 与执行系统
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q031 | 待回答 | Function Calling 与 Tool Calling 的机制和边界是什么？ | `5.1` `5.2` `5.4` |
-| Q032 | 待回答 | 工具返回结果过大时，如何裁剪、压缩并保留证据？ | `5.3` |
-| Q033 | 待回答 | 慢工具和长任务如何采用异步执行、回调与恢复？ | `5.6` |
-| Q034 | 待回答 | 工具数量很多时，如何做发现、路由和候选集控制？ | `5.7` |
-| Q035 | 待回答 | Parallel Tool Calling 如何处理依赖、冲突和一致性？ | `5.8` |
+- [Q031 Function Calling 与 Tool Calling](./31-function-calling-vs-tool-calling.md)
+- [Q032 大工具结果压缩与证据保留](./32-tool-result-compression-and-evidence-preservation.md)
+- [Q033 异步长工具、回调与恢复](./33-async-long-running-tool-execution.md)
+- [Q034 工具发现、路由与候选集控制](./34-tool-discovery-routing-and-candidate-control.md)
+- [Q035 Parallel Tool Calling 一致性](./35-parallel-tool-calling-consistency.md)
 
 ## E. Memory
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q036 | 待回答 | Agent Memory 应如何分层？短期、长期、情节和程序记忆如何配合？ | `6.1` |
-| Q037 | 待回答 | 记忆何时写入、如何读取、更新、遗忘和防止污染？ | `6.2` `6.4` `6.5` `6.7` |
-| Q038 | 待回答 | 长对话的短期记忆如何存储、压缩和淘汰？ | `6.3` `6.6` `6.8` |
-| Q039 | 待回答 | 多用户高并发下，Memory 如何隔离、扩容和保证一致性？ | `6.9` `6.10` `6.11` `6.12` |
-| Q040 | 待回答 | Memory 系统的冷启动怎么解决？ | `6.13` |
+- [Q036 Memory 分层](./36-agent-memory-layering.md)
+- [Q037 Memory 写入、读取、更新与遗忘](./37-memory-write-read-update-forgetting.md)
+- [Q038 长对话短期记忆](./38-long-conversation-short-term-memory.md)
+- [Q039 多租户 Memory 隔离与一致性](./39-multi-tenant-memory-isolation-and-consistency.md)
+- [Q040 Memory 冷启动](./40-memory-cold-start.md)
 
 ## F. Multi-Agent、协议与平台
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q041 | 待回答 | Multi-Agent 的拓扑、通信、状态管理和路由如何设计？ | `7.3` `7.4` `7.5` `7.6` `7.7` `7.9` `7.10` |
-| Q042 | 待回答 | Multi-Agent 的错误与幻觉为什么会放大？如何控制？ | `7.11` |
-| Q043 | 需核验 | MCP 的架构、原语、会话和传输机制是什么？ | `8.1` `8.2` `8.4` |
-| Q044 | 待回答 | MCP 与 Function Calling 是什么关系？什么时候直接调用 API？ | `8.3` |
-| Q045 | 待回答 | Agent 与前端通信为什么常用 SSE？什么时候用 WebSocket？ | `8.5` |
-| Q046 | 需核验 | A2A 协议解决什么问题？Agent Card、Task、Message 如何工作？ | `7.8` `8.6` `8.7` |
-| Q047 | 待回答 | 大模型网关解决哪些问题？如何设计路由、配额、审计和降级？ | `8.8` |
+- [Q041 Multi-Agent 拓扑、通信、状态与路由](./41-multi-agent-topology-communication-state-routing.md)
+- [Q042 Multi-Agent 错误放大](./42-multi-agent-error-amplification.md)
+- [Q043 MCP 架构、原语与传输](./43-mcp-architecture-primitives-and-transports.md)
+- [Q044 MCP、Function Calling 与直接 API](./44-mcp-vs-function-calling-and-direct-api.md)
+- [Q045 SSE 与 WebSocket](./45-sse-vs-websocket-for-agent-frontend.md)
+- [Q046 A2A：Agent Card、Task、Message 与 Artifact](./46-a2a-protocol-agent-card-task-message.md)
+- [Q047 大模型网关](./47-llm-gateway-design.md)
 
-## G. 系统设计、框架与新术语
+## G. 系统设计、产品与框架
 
-| ID | 状态 | 主问题 | 原始题号 |
-|---|---|---|---|
-| Q048 | 待回答 | 如何设计一个生产级智能客服 Agent？ | `9.1` |
-| Q049 | 需核验 | 如何建立模型能力边界并进行模型路由和选型？ | `9.5` |
-| Q050 | 需核验 | Claude Code、Codex、Cursor 等 Coding Agent 如何比较？ | `10.1` `10.3` `10.4` `10.5` `11.12` |
-| Q051 | 需核验 | LangChain、LangGraph、LangSmith 及主流 Agent 框架如何选型？ | `7.2` `10.2` |
-| Q052 | 已完成（2026-08-01） | 什么是 Harness Engineering？它与 Prompt、Context、Agent Runtime 有什么关系？ | `1.8` `11.1`—`11.11` `12.3` |
+- [Q048 生产级智能客服 Agent](./48-production-customer-service-agent-design.md)
+- [Q049 模型能力边界与路由](./49-model-capability-boundaries-and-routing.md)
+- [Q050 Coding Agent 产品比较](./50-coding-agent-product-comparison.md)
+- [Q051 Agent 框架选型](./51-agent-framework-selection.md)
+- [Q052 Harness Engineering](./52-harness-engineering.md)
 
-## H. Agent 原理手撕扩展
+## H. 国内面试原理手撕专题
 
-| ID | 状态 | 主问题 | 来源 |
-|---|---|---|---|
-| Q053 | 已完成 | 从零设计一个最小 Agent Runtime | 原题 `1.9` `1.10` `5.4` `5.5` `12.2` 扩展 |
-| Q054 | 已完成 | 手写 Function Calling 完整链路 | Q031 的底层设计扩展 |
-| Q055 | 已完成 | 手写 Agent State 与消息协议 | Runtime 状态原理扩展 |
-| Q056 | 已完成 | 手写 Context Builder 与 Token Budget | Q005 的底层设计扩展 |
-| Q057 | 已完成 | 手写停止条件与重复动作检测 | Q003 的底层设计扩展 |
-| Q058 | 已完成 | 设计 Checkpoint、暂停、恢复与幂等 | Durable Execution 扩展 |
-| Q059 | 已完成 | 设计异步长工具状态机 | Q033 的底层设计扩展 |
-| Q060 | 已完成 | 设计 Parallel Tool Calling 依赖调度器 | Q035 的底层设计扩展 |
-| Q061 | 已完成 | 设计 Planner–Executor–Replanner | Q010 的底层设计扩展 |
-| Q062 | 已完成 | 设计 Human-in-the-Loop 审批状态机 | Q014 / 高风险执行扩展 |
-| Q063 | 已完成 | 设计 Agent Trace、Replay 与故障归因 | Q007 / Q015 的底层设计扩展 |
+- [Q053 从零设计最小 Agent Runtime](./53-design-minimal-agent-runtime.md)
+- [Q054 手写 Function Calling 完整链路](./54-function-calling-end-to-end.md)
+- [Q055 手写 Agent State 与消息协议](./55-agent-state-and-message-protocol.md)
+- [Q056 手写 Context Builder 与 Token Budget](./56-context-builder-and-token-budget.md)
+- [Q057 手写停止条件与重复动作检测](./57-stop-conditions-and-loop-detection.md)
+- [Q058 Checkpoint、暂停、恢复与幂等](./58-checkpoint-pause-resume-idempotency.md)
+- [Q059 异步长工具状态机](./59-async-long-running-tools.md)
+- [Q060 Parallel Tool Calling 依赖调度器](./60-parallel-tool-dependency-scheduler.md)
+- [Q061 Planner–Executor–Replanner](./61-planner-executor-replanner.md)
+- [Q062 Human-in-the-Loop 审批状态机](./62-human-in-the-loop-approval-state-machine.md)
+- [Q063 Agent Trace、Replay 与故障归因](./63-agent-trace-replay-failure-attribution.md)
 
-完整学习路线见：[Agent 设计原理与手撕专题](./PRINCIPLES.md)。
+## 维护规则
 
-## 去重判断
-
-通常合并：
-
-- 只是替换框架名、公司名或业务例子；
-- 一个问题是另一个问题的自然追问，仍使用同一套分析框架；
-- “是什么、为什么、如何落地”适合在一篇宽泛题中完整展开。
-
-应该拆分：
-
-- 需要不同的技术机制、状态模型或评价指标；
-- 一个偏架构选型，另一个偏具体算法或协议细节；
-- 合并后无法在 5～10 分钟内形成清晰口述结构；
-- 国内面试需要独立进行白板设计或伪代码实现。
-
-## 原始材料质量风险
-
-以下内容不能未经核验直接写入答案：
-
-- 明确百分比、价格、排行榜、SOTA 或“工业优秀线”；
-- 具体模型版本、产品功能和上下文长度；
-- “某框架默认重试几次”“某方案提升多少”等个人案例；
-- 将 Harness Engineering、Loop Engineering 等经验性术语包装成统一行业标准；
-- 把用户不采纳、停留时长等弱信号直接当成错误标签；
-- 把工具失败完全交给 LLM 自主处理，缺少代码层策略、幂等和权限边界。
+- 同义问题合并到已有主问题；
+- 动态产品和协议标注整理日期；
+- 技术依据优先使用规范、论文和官方文档；
+- 宽泛题回答定义、机制、工程、边界和项目经验；
+- 手撕题回答状态、数据结构、伪代码、异常与恢复；
+- 新的学习疑问直接回写对应题目。
